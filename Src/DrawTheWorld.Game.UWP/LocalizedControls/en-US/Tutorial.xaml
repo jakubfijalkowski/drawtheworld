@@ -1,0 +1,173 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls">
+
+	<ControlTemplate x:Name="TutorialPage1Template" TargetType="ContentControl">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<StackPanel Grid.Column="0" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="Let's begin with theory:" Style="{StaticResource TutorialHeaderStyle}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}">
+					<Paragraph>
+						Draw the World is a logic game based on
+						<Bold>Japanese crosswords</Bold>, also known as
+						<Bold>nonograms</Bold> or
+						<Bold>paint by numbers</Bold>.
+						In this kind of games, you have a grid of cells(known as the fields) and you have to fill the grid according to clues that are given at the sides to reveal a hidden picture.
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+			<local:TutorialBoard Grid.Column="1" VerticalAlignment="Top" AssignedBoardName="TutorialPage1" />
+		</Grid>
+	</ControlTemplate>
+
+	<ControlTemplate x:Name="TutorialPage2Template" TargetType="ContentControl">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<RichTextBlock Grid.Column="0" Style="{StaticResource TutorialTextStyle}">
+				<Paragraph>
+					Enough of theory. Long story short - your goal is to draw the picture(or better: Draw the World!).
+					<LineBreak />
+					To do this, you use a few tools and clues that the author has left for you. But don't worry - these clues are always correct.
+					<LineBreak />
+				</Paragraph>
+
+				<Paragraph>
+					Clues tell us, how we should fill a row or a column. If the row is described as "<Span Foreground="Red">1</Span>
+					<Span Foreground="Green">1</Span>
+					<Span Foreground="Black">1</Span>", it must contain one red block followed by one green block and one black block. Each block is one field in
+					size. Between them, there might be any number of empty fields or no empty fields at all. The only exception is when two blocks of the same
+					color lie side by side, then at least one empty field between them must be persisted.
+				</Paragraph>
+			</RichTextBlock>
+			<local:TutorialBoard Grid.Column="1" VerticalAlignment="Center" AssignedBoardName="TutorialPage2" />
+		</Grid>
+	</ControlTemplate>
+
+	<ControlTemplate x:Name="TutorialPage3Template" TargetType="ContentControl">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="15" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="15" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="15" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<local:TextBlockWithShadow Text="Tools" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TutorialHeaderStyle}" />
+			<StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="Brush" Style="{StaticResource TutorialHeaderLevel2Style}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}" LineHeight="50">
+					<Paragraph>
+						Filling fields is done with
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/BrushIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer> - you just select it and start drawing. If you mistakenly selected the wrong start field or the wrong
+						color, you can interrupt your action by pressing space or touching the screen with another finger.
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+
+			<StackPanel Grid.Column="0" Grid.Row="3" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="X-marker" Style="{StaticResource TutorialHeaderLevel2Style}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}" LineHeight="50">
+					<Paragraph>
+						There are also a bunch of tools that will help you solve a board. One that is especially useful is
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/ExcluderIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer> that allows you to exclude the fields. If you are sure that particular field is not filled - feel free to stamp it with "X".
+						If you change your mind - don't worry, you can revert your action. Just use the same tool, but as the start select already excluded field.
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+			<local:TutorialBoard Grid.Column="1" Grid.Row="3" AssignedBoardName="ExcluderSample" />
+
+			<StackPanel Grid.Column="0" Grid.Row="5" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="Counter" Style="{StaticResource TutorialHeaderLevel2Style}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}" LineHeight="50">
+					<Paragraph>
+						Another useful tool is
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/CounterToolIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer>. It will help you with counting fields. It is hard to present its functionality in words, so just look at
+						this animation:
+					</Paragraph>
+					<Paragraph>
+						If you want to erase your help-numbers, just press space or use
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/EraseCounterToolIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer> button in the toolbar.
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+			<local:TutorialBoard Grid.Column="1" Grid.Row="5" AssignedBoardName="CounterSample" />
+
+			<StackPanel Grid.ColumnSpan="2" Grid.Row="7" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="Panning" Style="{StaticResource TutorialHeaderLevel2Style}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}" LineHeight="50">
+					<Paragraph>
+						If you want to pan the board using simple gesture, you must either deselect the tool(right click it) or use 
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/PanToolIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer>.
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+		</Grid>
+	</ControlTemplate>
+
+	<ControlTemplate x:Name="TutorialPage4Template" TargetType="ContentControl">
+		<StackPanel Orientation="Vertical">
+			<local:TextBlockWithShadow Text="Tips" Style="{StaticResource TutorialHeaderLevel2Style}" />
+			<RichTextBlock Style="{StaticResource TutorialTextStyle}">
+				<Paragraph>
+					Finally, here's a bunch of tips that should help you with solving the boards:
+					<LineBreak />
+				</Paragraph>
+				<Paragraph>
+					Color and the brush can be selected from both toolbox and the clues at the sides of the board. Simply tap the number and you can be sure, that brush along with correct color
+					are selected.
+					<LineBreak />
+				</Paragraph>
+				<Paragraph>
+					If game mode doesn't fade out clues automatically, you can do it by double tapping selected clue. If you want the clue to be colorful again, just double tap it once more.
+					<LineBreak />
+				</Paragraph>
+			</RichTextBlock>
+		</StackPanel>
+	</ControlTemplate>
+
+	<ControlTemplate x:Name="TutorialPage5Template" TargetType="ContentControl">
+		<RichTextBlock Style="{StaticResource TutorialTextStyle}">
+			<Paragraph>
+				Now, you should be able to play Draw the World successfully!
+				<LineBreak/>
+				It is worth mentioning that the game provides a few game modes that differ in rules. But I leave it for you to discover how they are working(but if you really want,
+				descriptions are available in "Help"). ;-)
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				If you want some tips on how to solve the board, there are some on
+				<InlineUIContainer>
+					<HyperlinkButton NavigateUri="http://en.wikipedia.org/wiki/Nonogram" Style="{StaticResource TutorialHyperlinkStyle}">Wikipedia</HyperlinkButton>
+				</InlineUIContainer>.
+				They are for classic nonograms(only black or empty fields), but may be adapted to colorful ones as well.
+			</Paragraph>
+		</RichTextBlock>
+	</ControlTemplate>
+
+</ResourceDictionary>

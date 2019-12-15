@@ -1,0 +1,88 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls">
+
+	<ControlTemplate x:Key="HelpPackExportGuidelinesTemplate" TargetType="ContentControl">
+		<RichTextBlock>
+			<Paragraph>
+				Nie każda paczka może zostać wyeksportowana z gry. Jest tak z prostej przyczyny - nie każda nadaje się do pokazania i do grania.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Wyobraź sobie, że stworzyłeś/aś dwie plansze o tej samej nazwie albo planszę bez nazwy. Gracz byłby niezadowolony, jeśli zobaczyłby je. Dlatego właśnie
+				każda plansza musi mieć przynajmniej domyślną nazwę(dla języka angielskiego, oznaczonego jako "en-US") i nazwa ta musi być unikatowa w obrębie paczki. Pamiętaj,
+				że paczka też musi mieć domyślną nazwę.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Jeśli plansza jest za mała, gracz nie będzie miał satysfakcji z jej rozwiązywania i dlatego musi ona być przynajmniej w rozmiarze 5x5.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Załóżmy, że planszy nie mającej kolorów, tylko puste pola, udało się wkraść do Twojej paczki. Niestety, nie będzie ona grywalna, więc musisz ją znaleźć i ubarwić.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Aktualnie możesz używać co najwyżej 32 różne kolory, ale pamiętaj, że plansza z wieloma kolorami może być bardzo trudna do rozwiązania. Jeśli dodatkowo zawiera różne
+				odcienie tego samego koloru, gracz może mieć problem z rozróżnieniem ich, co będzie go złościć.
+			</Paragraph>
+		</RichTextBlock>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="HelpImageImportTemplate" TargetType="ContentControl">
+		<RichTextBlock>
+			<Paragraph>
+				Czasami łatwiej i przyjemniej jest narysować coś w swoim ulubionym programie graficznym niż we wbudowanym designerze. Z pomocą przychodzi funkcja importu obrazków,
+				która pozwala tworzyć piękne pixel artowe obrazki z pomocą dowolnego programu, a następnie importowanie ich do gry.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Przy importowaniu obrazów należy pamiętać o kilku rzeczach. Plansza będzie takich samych rozmiarów jak obrazek, więc jeśli spróbujesz dodać obrazek o rozmiarze 1000x1000,
+				zostanie stworzona plansza o niebotycznych rozmiarach.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Tylko nieprzeźroczyste(kanał alfa = 255) zostaną zamienione na pola, reszta będzie odrzucona.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Obrazek może składać się z więcej niż 32 kolorów i procedura importu tego nie zmieni, lecz nie będziesz w stanie wyeksportować paczki z taką planszą. Będzie ona mogła
+				zostać poprawiona później w designerze, ale wymagać to będzie dodatkowej planszy.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Ponieważ kompresja stratna(wykorzystywana m.in. w JPGach) może powodować tzw. artefakty, tylko obrazki skompresowane bezstratnie albo nie skompresowane w ogóle
+				są dozwolone. Dlatego też obsługiwane są tylko obrazy GIF, PNG i BMP.
+			</Paragraph>
+		</RichTextBlock>
+	</ControlTemplate>
+	
+	<ControlTemplate x:Key="HelpTipsTemplate" TargetType="ContentControl">
+		<StackPanel Orientation="Vertical">
+			<local:TextBlockWithShadow Text="Przesuwanie planszy" />
+			<RichTextBlock LineHeight="50">
+				<Paragraph>
+					Jeśli chciałbyś przesunąć planszę, musisz użyć do tego
+					<InlineUIContainer >
+						<Image Source="/Assets/Tools/PanTool.png" Margin="0,0,0,-15" Width="50" />
+					</InlineUIContainer>lub odznaczyć wybrane narzędzie(kliknij go prawym przyciskiem myszy).
+				</Paragraph>
+			</RichTextBlock>
+			<local:TextBlockWithShadow Text="Wybór koloru" Margin="0,25,0,0" FontSize="20" />
+			<RichTextBlock>
+				<Paragraph>
+					Kolor i "pędzel" możesz wybrać zarówno z paska narzędzi, jak i naciskając na liczbę we wskazówkach. Masz wtedy pewność, że wybrałeś odpowiedni kolor.
+				</Paragraph>
+			</RichTextBlock>
+			<local:TextBlockWithShadow Text="Wygaszanie wskazówek" Margin="0,25,0,0" FontSize="20" />
+			<RichTextBlock>
+				<Paragraph>
+					Jeśli tryb gry nie wygasza automatycznie liczb we wskazówkach, możesz to zrobić ręcznie naciskając ją dwukrotnie. Jeśli się pomyliłeś i chcesz daną liczbę znów
+					w pełnych barwach - powtórz tą samą akcję, co przy wygaszaniu.
+				</Paragraph>
+			</RichTextBlock>
+		</StackPanel>
+	</ControlTemplate>
+
+</ResourceDictionary>

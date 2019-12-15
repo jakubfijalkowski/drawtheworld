@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="44273JakubFijakowski.DrawtheWorld" Publisher="CN=5DBDF69A-8B0A-4AED-A5CB-72D145A80FF7" Version="1.6.5.0" />
+  <Properties>
+    <DisplayName>Draw the World</DisplayName>
+    <PublisherDisplayName>Jakub Fijałkowski</PublisherDisplayName>
+    <Logo>Assets\Images\Logos\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="DrawTheWorld.Game.App">
+      <VisualElements DisplayName="Draw the World" Logo="Assets\Images\Logos\Logo.png" SmallLogo="Assets\Images\Logos\SmallLogo.png" Description="ms-resource:Manifest_GameDescription" ForegroundText="dark" BackgroundColor="#7EBCF5" ToastCapable="true">
+        <DefaultTile ShowName="noLogos" ShortName="Draw the World" WideLogo="Assets\Images\Logos\WideLogo.png" />
+        <SplashScreen Image="Assets\Images\Logos\SplashScreen.png" BackgroundColor="#7EBCF5" />
+        <InitialRotationPreference>
+          <Rotation Preference="portrait" />
+          <Rotation Preference="landscape" />
+          <Rotation Preference="portraitFlipped" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+      <Extensions>
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="dtw_pack">
+            <DisplayName>ms-resource:Manifest_FileTypeDisplayName</DisplayName>
+            <Logo>Assets/Images/Logos/IconicLogo.png</Logo>
+            <EditFlags OpenIsSafe="true" />
+            <SupportedFileTypes>
+              <FileType>.dtw</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+  <Extensions>
+    <Extension Category="windows.gameExplorer">
+      <GameExplorer GameDefinitionContainer="DrawTheWorld.Game.GDF.dll" />
+    </Extension>
+  </Extensions>
+</Package>

@@ -1,0 +1,87 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls">
+	
+	<ControlTemplate x:Key="HelpPackExportGuidelinesTemplate" TargetType="ContentControl">
+		<RichTextBlock>
+			<Paragraph>
+				Not every pack can be exported from the game. That's because not every pack is suitable to show to others and play with.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Imagine, that you have created two boards with the same name or no name at all. A player would be confused if she/he would see such a board. So you must specify at least
+				default name for each board(for English language, denoted as "en-US") and this name must be unique within the pack. Additionally, the pack must have default name specified too.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				If board is too small, there is no difficulty in solving it and a player would be disappointed. Because of that, each board must be at least 5x5.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Lets say that board with no colors, just empty field has sneaked to your pack. You must find it and make not so plain.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				For now, you may use at most 32 different colors, but keep in mind, that the board with too many colors can be hard to solve. The board with quite similar colors
+				can be confusing, so try to use as different colors as you can.
+			</Paragraph>
+		</RichTextBlock>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="HelpImageImportTemplate" TargetType="ContentControl">
+		<RichTextBlock>
+			<Paragraph>
+				Sometimes it is easier to create image using your favourite program than sticking to built-in designer. So that's where "import image" function comes in.
+				It gives you the ability to make beautiful pixel art images in your favourite program and then import them into the game.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				But there are few things to remember. The board will have the same size as image resolution, so when you will try to import a 1000px x 1000 px image, it will result in
+				an enormous board.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Remember that only fully opaque(alpha channel = 255) pixels will be treated as fields, other pixels will be discarded.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				You can use more than 32 colors in images and import procedure will not change it, but you will not be able to export pack. You can correct it later inside the designer,
+				but this will result in additional work.
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Because the lossy compression(used in, for example, JPEGs) can result in artefacts, you can only import images compressed using lossless algorithms or not compressed at all.
+				Because of that, only GIF, PNG and BMP images are allowed.
+			</Paragraph>
+		</RichTextBlock>
+	</ControlTemplate>
+
+	<ControlTemplate x:Key="HelpTipsTemplate" TargetType="ContentControl">
+		<StackPanel Orientation="Vertical">
+			<local:TextBlockWithShadow Text="Panning the board" />
+			<RichTextBlock LineHeight="50">
+				<Paragraph>
+					If you want to pan the board using simple gesture, you must either deselect the tool(right click it) or use
+					<InlineUIContainer>
+						<Image Source="/Assets/Tools/PanToolIcon.png" Margin="0,0,0,-15" Width="50" />
+					</InlineUIContainer>.
+				</Paragraph>
+			</RichTextBlock>
+			<local:TextBlockWithShadow Text="Selecting color" Margin="0,25,0,0" FontSize="20" />
+			<RichTextBlock>
+				<Paragraph>
+					Color and the brush can be selected from both toolbox and the clues at the sides of the board. Simply tap the number and you can be sure, that brush along with correct color
+					are selected.
+				</Paragraph>
+			</RichTextBlock>
+			<local:TextBlockWithShadow Text="Fading out clues" Margin="0,25,0,0" FontSize="20" />
+			<RichTextBlock>
+				<Paragraph>
+					If game mode doesn't fade out clues automatically, you can do it by double tapping selected clue. If you want the clue to be colorful again, just double tap it once more.
+				</Paragraph>
+			</RichTextBlock>
+		</StackPanel>
+	</ControlTemplate>
+
+</ResourceDictionary>

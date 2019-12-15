@@ -1,0 +1,835 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Controls_ModeSelector_Mode_FreeMode" xml:space="preserve">
+    <value>WOLNY</value>
+  </data>
+  <data name="Controls_ModeSelector_Mode_SupervisedMode" xml:space="preserve">
+    <value>NADZOROWANY</value>
+  </data>
+  <data name="Pages_DesignerPage_AppBar_Discard.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Porzuć zmiany</value>
+  </data>
+  <data name="Pages_DesignerPage_AppBar_Save.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="Pages_DesignerPage_AppBar_Settings.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="Pages_DesignerPage_BoardNameLabel.Text" xml:space="preserve">
+    <value>Nazwa:</value>
+  </data>
+  <data name="Pages_DesignerPage_BoardPaletteLabel.Text" xml:space="preserve">
+    <value>Paleta kolorów:</value>
+  </data>
+  <data name="Pages_DesignerPage_BoardSizeLabel.Text" xml:space="preserve">
+    <value>Rozmiar:</value>
+  </data>
+  <data name="Pages_DesignerPage_BoardSettings.SettingsName" xml:space="preserve">
+    <value>Ustawienia planszy</value>
+  </data>
+  <data name="Pages_DesignerPage_BoardSettings_PaneName" xml:space="preserve">
+    <value>Ustawienia planszy</value>
+  </data>
+  <data name="Pages_GamePage_AppBar_Abort.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="Pages_GamePage_BoardNameCaption.Text" xml:space="preserve">
+    <value>Ukończyłeś planszę</value>
+  </data>
+  <data name="Pages_GamePage_BoardTitle" xml:space="preserve">
+    <value>„{0}”</value>
+  </data>
+  <data name="Pages_GamePage_FailureUI_OKButton.Content" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Pages_GamePage_FineLimit" xml:space="preserve">
+    <value>Limit kar został przekroczony.</value>
+  </data>
+  <data name="Pages_GamePage_LostCaption.Text" xml:space="preserve">
+    <value>PRZEGRANA</value>
+  </data>
+  <data name="Pages_GamePage_SuccessUI_OKButton.Content" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Pages_GamePage_TimeCaption.Text" xml:space="preserve">
+    <value>Zajęło Ci to:</value>
+  </data>
+  <data name="Pages_GamePage_UserAction" xml:space="preserve">
+    <value>Gra została przerwana.</value>
+  </data>
+  <data name="Pages_GamePage_WinCaption.Text" xml:space="preserve">
+    <value>WYGRANA</value>
+  </data>
+  <data name="Platform_ToolNames_Brush" xml:space="preserve">
+    <value>Pędzel</value>
+  </data>
+  <data name="Platform_ToolNames_CounterTool" xml:space="preserve">
+    <value>Licznik</value>
+  </data>
+  <data name="Platform_ToolNames_EraseCounterTool" xml:space="preserve">
+    <value>Wyczyść licznik</value>
+  </data>
+  <data name="Platform_ToolNames_Eraser" xml:space="preserve">
+    <value>Gumka</value>
+  </data>
+  <data name="Platform_ToolNames_Excluder" xml:space="preserve">
+    <value>Postaw „X”</value>
+  </data>
+  <data name="Platform_ToolNames_PanTool" xml:space="preserve">
+    <value>Przesuń planszę</value>
+  </data>
+  <data name="Pages_GameList_Header.Text" xml:space="preserve">
+    <value>Lista plansz</value>
+  </data>
+  <data name="Pages_GameList_PackAuthorLabel.Text" xml:space="preserve">
+    <value>Autor:</value>
+  </data>
+  <data name="Pages_GameList_PackAuthorsPageLabel.Text" xml:space="preserve">
+    <value>Strona autora:</value>
+  </data>
+  <data name="Pages_GameList_PackDescriptionLabel.Text" xml:space="preserve">
+    <value>Opis:</value>
+  </data>
+  <data name="Pages_GameList_PackInfo.SettingsName" xml:space="preserve">
+    <value>Paczka</value>
+  </data>
+  <data name="Pages_GameList_PackNameLabel.Text" xml:space="preserve">
+    <value>Nazwa:</value>
+  </data>
+  <data name="Pages_GameList_AppBar_ShowInfo.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Info o paczce</value>
+  </data>
+  <data name="Pages_GameList_PackInfo_PaneName" xml:space="preserve">
+    <value>Informacje o paczce</value>
+  </data>
+  <data name="Pages_GameList_PackType_UserPurchase" xml:space="preserve">
+    <value>Ta paczka została zakupiona ze Sklepu gry. Zostanie automatycznie pobrana, gdy zalogujesz się na to konto na innym komputerze.</value>
+  </data>
+  <data name="Pages_GameList_PackType_CustomInstallation" xml:space="preserve">
+    <value>Ta paczka została zainstalowana ręcznie. Nie jest przechowywana online i nie będzie można uzyskać do niej dostępu z innego komputera.</value>
+  </data>
+  <data name="Pages_GameList_PackType_Demo" xml:space="preserve">
+    <value>To jest paczka demonstracyjna</value>
+  </data>
+  <data name="Platform_FeatureProvider_BuyButton" xml:space="preserve">
+    <value>Kup</value>
+  </data>
+  <data name="Platform_FeatureProvider_CancelButton" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="Platform_FeatureProvider_DialogTitle" xml:space="preserve">
+    <value>Kup</value>
+  </data>
+  <data name="Manifest_GameDescription" xml:space="preserve">
+    <value>Zagraj w jedną z najbardziej wciągających gier logicznych znaną z gazet na swoim komputerze lub tablecie. Bazując na znanych „japońskich krzyżówkach”, Draw the World oddaje w Twoje ręce nowy, ale jednak klasyczny model gry, który przyciągnie Cię na długie godziny.</value>
+  </data>
+  <data name="Platform_Notifications_CannotAccessApi" xml:space="preserve">
+    <value>Nie udało się uzyskać dostępu do usługi online Draw the World. Sprawdź swoje połączenie internetowe i spróbuj ponownie później.</value>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronized1" xml:space="preserve">
+    <value>Pobrano {0} paczkę/i/ek.</value>
+    <comment>Base form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronized2" xml:space="preserve">
+    <value>Jest ona/są one dostępne w menu.</value>
+    <comment>Base form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors1" xml:space="preserve">
+    <value>Pobrano {0} paczkę/i/ek.</value>
+    <comment>Base form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors2" xml:space="preserve">
+    <value>Nie udało się pobrać {1} paczki/ek.</value>
+    <comment>Base form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors3" xml:space="preserve">
+    <value>Jest ona/są one dostępne w menu.</value>
+    <comment>Base form</comment>
+  </data>
+  <data name="Controls_SettingsAndAccount_DuringProcess.Text" xml:space="preserve">
+    <value>Logowanie...</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_Info.SettingsName" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_NotSignedIn.Text" xml:space="preserve">
+    <value>Nie jesteś zalogowany.</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_SignedIn.Text" xml:space="preserve">
+    <value>Jesteś zalogowany jako:</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_SignInButton.Content" xml:space="preserve">
+    <value>Zaloguj</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_SignOutButton.Content" xml:space="preserve">
+    <value>Wyloguj</value>
+  </data>
+  <data name="Pages_StorePage_Header.Text" xml:space="preserve">
+    <value>Sklep gry</value>
+  </data>
+  <data name="Platform_Notifications_NotEnoughMoney" xml:space="preserve">
+    <value>Nie masz wystarczającej ilości monet. Czy chesz je kupić?</value>
+  </data>
+  <data name="Platform_Notifications_PackPurchased1" xml:space="preserve">
+    <value>Zakupiłeś paczkę „{0}”.</value>
+  </data>
+  <data name="Platform_Notifications_PackPurchased2" xml:space="preserve">
+    <value>Jest ona dostępna w menu.</value>
+  </data>
+  <data name="Platform_Notifications_CannotAccessApiTitle" xml:space="preserve">
+    <value>Nie udało się uzyskać dostępu do usługi online</value>
+  </data>
+  <data name="Helpers_Popup_NoButton" xml:space="preserve">
+    <value>Nie</value>
+  </data>
+  <data name="Platform_Notifications_NotEnoughMoneyTitle" xml:space="preserve">
+    <value>Potrzeba więcej monet</value>
+  </data>
+  <data name="Helpers_Popup_YesButton" xml:space="preserve">
+    <value>Tak</value>
+  </data>
+  <data name="Platform_Notifications_PackDataError" xml:space="preserve">
+    <value>Nie udało się pobrać paczki. Zostanie ona pobrana przy następnym uruchomieniu. Jeśli problem będzie się powtarzał, skontaktuj się z pomocą.</value>
+  </data>
+  <data name="Platform_Notifications_PackDataErrorTitle" xml:space="preserve">
+    <value>Nie udało się pobrać paczki</value>
+  </data>
+  <data name="Platform_Notifications_StorageProblem" xml:space="preserve">
+    <value>Nie udało się zapisać paczki na dysku. To może być tymczasowy problem, lecz sprawdź, czy dysk nie jest pełen.</value>
+  </data>
+  <data name="Platform_Notifications_StorageProblemTitle" xml:space="preserve">
+    <value>Wystąpił problem z zapisem</value>
+  </data>
+  <data name="Controls_RequireSignIn_Message.Text" xml:space="preserve">
+    <value>By wykonać tą operację, musisz być zalogowany. Czy chcesz to zrobić teraz?</value>
+  </data>
+  <data name="Controls_RequireSignIn_Header.Text" xml:space="preserve">
+    <value>Musisz być zalogowany</value>
+  </data>
+  <data name="Helpers_Popup_OkButton" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Platform_Notifications_Error" xml:space="preserve">
+    <value>Nie udało się wykonać tej operacji. Spróbuj ponownie później.</value>
+  </data>
+  <data name="Platform_Notifications_ErrorTitle" xml:space="preserve">
+    <value>Wystąpił błąd</value>
+  </data>
+  <data name="Pages_StorePage_AlreadyPurchasedButton.Content" xml:space="preserve">
+    <value>Graj</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Board_Delete.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Usuń planszę</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Board_Settings.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Ustawienia planszy</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Common_AddPack.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Dodaj paczkę</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Pack_AddBoard.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Dodaj planszę</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Pack_Delete.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Usuń paczkę</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Pack_Export.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Eksportuj</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Pack_ImportImages.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Importuj obrazki</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Pack_Settings.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Ustawienia paczki</value>
+  </data>
+  <data name="Pages_DesignerList_BoardSettings.SettingsName" xml:space="preserve">
+    <value>Ustawienia planszy</value>
+  </data>
+  <data name="Pages_DesignerList_BoardSettings_PaneName" xml:space="preserve">
+    <value>Ustawienia planszy</value>
+  </data>
+  <data name="Pages_DesignerList_BoardSettings_NameLabel.Text" xml:space="preserve">
+    <value>Nazwa:</value>
+  </data>
+  <data name="Pages_DesignerList_BoardSettings_SizeInfo.Text" xml:space="preserve">
+    <value>Rozmiar planszy będzie mógł być zmieniony w designerze.</value>
+  </data>
+  <data name="Pages_DesignerList_Header.Text" xml:space="preserve">
+    <value>Designer</value>
+  </data>
+  <data name="Pages_DesignerList_NoPacksInformation.Text" xml:space="preserve">
+    <value>Nie utworzyłeś jeszcze żadnej paczki. Użyj przycisku w dolnym pasku aplikacji, by ją utworzyć.</value>
+  </data>
+  <data name="Pages_DesignerList_PackSettings.SettingsName" xml:space="preserve">
+    <value>Ustawienia paczki</value>
+  </data>
+  <data name="Pages_DesignerList_PackSettings_PaneName" xml:space="preserve">
+    <value>Ustawienia paczki</value>
+  </data>
+  <data name="Pages_DesignerList_PackSettings_AuthorLabel.Text" xml:space="preserve">
+    <value>Autor:</value>
+  </data>
+  <data name="Pages_DesignerList_PackSettings_AuthorsPageLabel.Text" xml:space="preserve">
+    <value>Strona autora:</value>
+  </data>
+  <data name="Pages_DesignerList_PackSettings_DescriptionLabel.Text" xml:space="preserve">
+    <value>Opis:</value>
+  </data>
+  <data name="Pages_DesignerList_PackSettings_NameLabel.Text" xml:space="preserve">
+    <value>Nazwa:</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Common_AddPack_Existing" xml:space="preserve">
+    <value>Istniejącą</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_Common_AddPack_New" xml:space="preserve">
+    <value>Nową</value>
+  </data>
+  <data name="Helpers_UserData_AddButton" xml:space="preserve">
+    <value>Dodaj</value>
+  </data>
+  <data name="Platform_Notifications_PackLoadErrorSingleFailure" xml:space="preserve">
+    <value>Nie udało się załadować paczki, ponieważ jest ona nieprawidłowa.</value>
+  </data>
+  <data name="Platform_Notifications_PackLoadErrorTitle" xml:space="preserve">
+    <value>Problem z załadowaniem paczki.</value>
+  </data>
+  <data name="Platform_Notifications_PackSaveError1" xml:space="preserve">
+    <value>Nie udało się zapisać paczki</value>
+  </data>
+  <data name="Platform_Notifications_PackSaveError2" xml:space="preserve">
+    <value>„{0}”.</value>
+  </data>
+  <data name="Platform_Notifications_PackSaveError3" xml:space="preserve">
+    <value>Spróbuj ponownie.</value>
+  </data>
+  <data name="Helpers_UserData_ImportButton" xml:space="preserve">
+    <value>Importuj</value>
+  </data>
+  <data name="Platform_Notifications_BoardImportError" xml:space="preserve">
+    <value>Wystąpił błąd podczas importowania obrazków i {0} z nich nie zostało załadowany. Odwiedź „Pomoc”, by dowiedzieć się jak działa importowanie obrazków.</value>
+  </data>
+  <data name="Platform_Notifications_BoardImportErrorTitle" xml:space="preserve">
+    <value>Wystąpił błąd z importem obrazków</value>
+  </data>
+  <data name="Helpers_UserData_PackName" xml:space="preserve">
+    <value>Paczka Draw the World</value>
+  </data>
+  <data name="Platform_Notifications_PackNotValid" xml:space="preserve">
+    <value>Paczka nie może zostać wyeksportowana, ponieważ nie spełnia wymagań. Pamiętaj, że paczka musi posiadać przynajmniej jedną planszę oraz musi spełniać kilka innych wymogów(zobacz „Pomoc” jeśli chcesz wiedzieć więcej).</value>
+  </data>
+  <data name="Platform_Notifications_PackNotValidTitle" xml:space="preserve">
+    <value>Paczka jest nieprawidłowa</value>
+  </data>
+  <data name="Helpers_UserData_NewBoardName" xml:space="preserve">
+    <value>Nowa plansza</value>
+  </data>
+  <data name="Helpers_UserData_NewPackName" xml:space="preserve">
+    <value>Nowa paczka</value>
+  </data>
+  <data name="Pages_DesignerList_NoBoardsInformation" xml:space="preserve">
+    <value>Nie utworzyłeś jeszcze żadnej planszy w tej paczce. Użyj przycisków w dolnym pasku aplikacji, by ją utworzyć.</value>
+  </data>
+  <data name="Controls_BoardStatistics_AbortsLabel.Text" xml:space="preserve">
+    <value>Przerwania:</value>
+  </data>
+  <data name="Controls_BoardStatistics_BestTimeLabel.Text" xml:space="preserve">
+    <value>Najlepszy czas:</value>
+  </data>
+  <data name="Controls_BoardStatistics_LostLabel.Text" xml:space="preserve">
+    <value>Przegrane:</value>
+  </data>
+  <data name="Controls_BoardStatistics_WinsLabel.Text" xml:space="preserve">
+    <value>Wygrane</value>
+  </data>
+  <data name="Pages_GameList_AppBar_AddPack.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Dodaj paczkę</value>
+  </data>
+  <data name="Pages_GameList_AppBar_RemovePack.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Usuń paczkę</value>
+  </data>
+  <data name="Platform_FeatureProvider_Feature" xml:space="preserve">
+    <value>Ta funkcjonalność nie jest jeszcze odblokowana. Czy chcesz ją kupić?</value>
+  </data>
+  <data name="Pages_MainMenu_DesignerButton.Content" xml:space="preserve">
+    <value>DESIGNER</value>
+  </data>
+  <data name="Pages_MainMenu_GameButton.Content" xml:space="preserve">
+    <value>GRA</value>
+  </data>
+  <data name="Pages_MainMenu_StoreButton.Content" xml:space="preserve">
+    <value>SKLEP GRY</value>
+  </data>
+  <data name="Pages_StorePage_LoadingText.Text" xml:space="preserve">
+    <value>Wczytywanie danych z usługi online...</value>
+  </data>
+  <data name="Controls_AppInfo_Credits_Pane.SettingsName" xml:space="preserve">
+    <value>Autorzy</value>
+  </data>
+  <data name="Controls_AppInfo_Credits_CreatorLabel.Text" xml:space="preserve">
+    <value>Twórca:</value>
+  </data>
+  <data name="Controls_AppInfo_Credits_GraphicsLabel.Text" xml:space="preserve">
+    <value>Grafika:</value>
+  </data>
+  <data name="Controls_AppInfo_Credits_MusicLabel.Text" xml:space="preserve">
+    <value>Muzyka:</value>
+  </data>
+  <data name="Controls_AppInfo_Credits.Content" xml:space="preserve">
+    <value>Autorzy</value>
+  </data>
+  <data name="Controls_AppInfo_Credits_SpecialThanks.Text" xml:space="preserve">
+    <value>Podziękowania dla</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_MusicVolumeLabel.Text" xml:space="preserve">
+    <value>Głośność muzyki:</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_SoundsVolumeLabel.Text" xml:space="preserve">
+    <value>Głośność dźwięków:</value>
+  </data>
+  <data name="Controls_AppInfo_ContactUs_EmailSubject" xml:space="preserve">
+    <value>Draw the World - kontakt</value>
+  </data>
+  <data name="Controls_AppInfo_ContactUs.Content" xml:space="preserve">
+    <value>Skontaktuj się z nami</value>
+  </data>
+  <data name="Controls_AppInfo_GameModes_FreeMode_Description" xml:space="preserve">
+    <value>W tym trybie jesteś wolny. Gra nie będzie poprawiać Twoich ruchów, a kara nie zostanie naliczona. Wskazówki nie będą same wygasać, lecz możesz je do tego zmusić naciskając je dwukrotnie.</value>
+  </data>
+  <data name="Controls_AppInfo_GameModes_FreeMode_Title" xml:space="preserve">
+    <value>WOLNY</value>
+  </data>
+  <data name="Controls_AppInfo_GameModes_SupervisedMode_Description" xml:space="preserve">
+    <value>W tym trybie gra będzie sprawdzać Twoje ruchy. Jeśli przez przypadek wypełnisz pole złym kolorem albo spróbujesz wypełnić puste pole, gra odrzuci ruch i naliczy karę(pierwszy zły ruch – 1 minuta, drugi – 2, trzeci – 4 itd.). Dodatkowo, gdy poprawnie wypełnisz cały blok, gra oznaczy go jako ukończony, a wskazówka mu odpowiadająca wygaśnie.</value>
+  </data>
+  <data name="Controls_AppInfo_GameModes_SupervisedMode_Title" xml:space="preserve">
+    <value>NADZOROWANY</value>
+  </data>
+  <data name="Controls_AppInfo_Help_ImageImport.Content" xml:space="preserve">
+    <value>Importowanie obrazów</value>
+  </data>
+  <data name="Controls_AppInfo_Help_ImageImport_Pane.SettingsName" xml:space="preserve">
+    <value>Importowanie obrazów</value>
+  </data>
+  <data name="Controls_AppInfo_Help_Modes.Content" xml:space="preserve">
+    <value>Tryby gry</value>
+  </data>
+  <data name="Controls_AppInfo_Help_Modes_Pane.SettingsName" xml:space="preserve">
+    <value>Tryby gry</value>
+  </data>
+  <data name="Controls_AppInfo_Help_PackExportGuidelines.Content" xml:space="preserve">
+    <value>Eksportowanie paczek</value>
+  </data>
+  <data name="Controls_AppInfo_Help_PackExportGuidelines_Pane.SettingsName" xml:space="preserve">
+    <value>Eksportowanie paczek</value>
+  </data>
+  <data name="Controls_AppInfo_Help.Content" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="Controls_AppInfo_Help_Tips.Content" xml:space="preserve">
+    <value>Wskazówki</value>
+  </data>
+  <data name="Controls_AppInfo_Help_Tips_Pane.SettingsName" xml:space="preserve">
+    <value>Wskazówki</value>
+  </data>
+  <data name="Controls_AppInfo_Credits_OFLLicense_Button.Content" xml:space="preserve">
+    <value>SIL OFL wersja 1.1</value>
+  </data>
+  <data name="Controls_AppInfo_Credits_OFLLicense_Pane.SettingsName" xml:space="preserve">
+    <value>SIL Open Font License 1.1</value>
+  </data>
+  <data name="Controls_BugReporting_PaneName" xml:space="preserve">
+    <value>Zgłoś błąd</value>
+  </data>
+  <data name="Controls_BugReporting_CancelButton.Content" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="Controls_BugReporting_FailureHeader.Text" xml:space="preserve">
+    <value>Wystąpił błąd</value>
+  </data>
+  <data name="Controls_BugReporting_FailureMessage.Text" xml:space="preserve">
+    <value>Nie udało się wysłać zgłoszenia. Sprawdź swoje połączenie z Internetem i spróbuj ponownie.</value>
+  </data>
+  <data name="Controls_BugReporting_Header.Text" xml:space="preserve">
+    <value>Zgłoś błąd</value>
+  </data>
+  <data name="Controls_BugReporting_Message.Text" xml:space="preserve">
+    <value>Dokładamy wszelkich starań, by Draw the World była wolna od błędów, ale jest to bardzo trudne zadanie. Doceniamy wszelką pomoc ze strony społeczności. Proszę, poświęć chwilę i opisz błąd, który wystąpił i co do niego doprowadziło. Postaramy się rozwiązać problem tak szybko jak to tylko możliwe.</value>
+  </data>
+  <data name="Controls_BugReporting_SendButton.Content" xml:space="preserve">
+    <value>Wyślij</value>
+  </data>
+  <data name="Controls_BugReporting_SendingIndicator.Text" xml:space="preserve">
+    <value>Wysyłanie zgłoszenia</value>
+  </data>
+  <data name="Controls_BugReporting_SuccessHeader.Text" xml:space="preserve">
+    <value>Dziękujemy!</value>
+  </data>
+  <data name="Controls_BugReporting_SuccessMessage.Text" xml:space="preserve">
+    <value>Zgłoszenie zostało wysłane.</value>
+  </data>
+  <data name="Controls_CoinsUI_ApiError.Text" xml:space="preserve">
+    <value>Nie udało się uzyskać dostępu do usługi online Draw the World. Sprawdź swoje połączenie internetowe i spróbuj ponownie później. Zakup produktu został zapamiętany i zostanie użyty następnym razem bez dodatkowych opłat.</value>
+  </data>
+  <data name="Controls_CoinsUI_ErrorTitle.Text" xml:space="preserve">
+    <value>Wystąpił błąd</value>
+  </data>
+  <data name="Controls_CoinsUI_NoMoreConsumables.Text" xml:space="preserve">
+    <value>Skończyły się dostępne produkty tego typu w związku z ograniczeniami Sklepu Windows. Poczekaj proszę co najwyżej 24 godziny na odnowienie. Problem ten zostanie poprawiony w wersji dla systemu Windows 8.1.</value>
+  </data>
+  <data name="Controls_CoinsUI_OtherError.Text" xml:space="preserve">
+    <value>Nie udało się wykonać tej operacji. Spróbuj później.</value>
+  </data>
+  <data name="Controls_CoinsUI_PurchaseCompleteTitle.Text" xml:space="preserve">
+    <value>Zakupiono</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_BuyMoreCoinsButton.Content" xml:space="preserve">
+    <value>Kup</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_CoinsAmountText.Text" xml:space="preserve">
+    <value>Aktualnie posiadasz</value>
+  </data>
+  <data name="Manifest_FileTypeDisplayName" xml:space="preserve">
+    <value>Paczka Draw the World</value>
+  </data>
+  <data name="Platform_Notifications_PackLoadErrorMultipleFailure" xml:space="preserve">
+    <value>Nie udało się załadować paczek, ponieważ są one nieprawidłowe.</value>
+  </data>
+  <data name="Platform_Notifications_PackLoadErrorPartialFailure" xml:space="preserve">
+    <value>Nie udało się załadować niektórych paczek, ponieważ były niepoprawne. Reszta została dodana prawidłowo.</value>
+  </data>
+  <data name="Controls_CoinsUI_OtherErrorWithReceipt.Text" xml:space="preserve">
+    <value>Nie udało się wykonać tej operacji. Spróbuj później. Zakup produktu został zapamiętany i zostanie użyty następnym razem bez dodatkowych opłat.</value>
+  </data>
+  <data name="Controls_AppInfo_Credits_UsedProductsTitle.Text" xml:space="preserve">
+    <value>Użyte produkty</value>
+  </data>
+  <data name="Pages_StorePage_BoardInfo_Boards" xml:space="preserve">
+    <value>plansz(a/e)</value>
+    <comment>Base form</comment>
+  </data>
+  <data name="Pages_StorePage_BoardInfo_Boards_1" xml:space="preserve">
+    <value>plansza</value>
+    <comment>Singular form</comment>
+  </data>
+  <data name="Pages_StorePage_BoardInfo_Boards_2" xml:space="preserve">
+    <value>plansze</value>
+    <comment>Plural form 1</comment>
+  </data>
+  <data name="Pages_StorePage_BoardInfo_CreatedBy" xml:space="preserve">
+    <value>stworzona/e/ych przez</value>
+    <comment>Base form</comment>
+  </data>
+  <data name="Pages_StorePage_BoardInfo_CreatedBy_1" xml:space="preserve">
+    <value>której autorem jest</value>
+    <comment>Singular form</comment>
+  </data>
+  <data name="Pages_StorePage_BoardInfo_CreatedBy_2" xml:space="preserve">
+    <value>których autorem jest</value>
+    <comment>Plural form 1</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronized1_1" xml:space="preserve">
+    <value>Pobrano {0} paczkę.</value>
+    <comment>Singular form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronized1_2" xml:space="preserve">
+    <value>Pobrano {0} paczki.</value>
+    <comment>Plural form 1</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors1_1" xml:space="preserve">
+    <value>Pobrano {0} paczkę.</value>
+    <comment>Singular form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors1_2" xml:space="preserve">
+    <value>Pobrano {0} paczki.</value>
+    <comment>Plural form 1</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors2_1" xml:space="preserve">
+    <value>Nie udało się pobrać {1} paczki.</value>
+    <comment>Singular form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors2_2" xml:space="preserve">
+    <value>Nie udało się pobrać {1} paczek.</value>
+    <comment>Plural form 1/2</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronized2_1" xml:space="preserve">
+    <value>Jest ona dostępna w menu.</value>
+    <comment>Singular form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronized2_2" xml:space="preserve">
+    <value>Są one dostępne w menu.</value>
+    <comment>Plural form 1/2</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors3_1" xml:space="preserve">
+    <value>Jest ona dostępna w menu.</value>
+    <comment>Singular form</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors3_2" xml:space="preserve">
+    <value>Są one dostępne w menu.</value>
+    <comment>Plural form 1/2</comment>
+  </data>
+  <data name="Controls_RequireSignIn_FailureHeader.Text" xml:space="preserve">
+    <value>Wystąpił błąd</value>
+  </data>
+  <data name="Controls_RequireSignIn_FailureMessage.Text" xml:space="preserve">
+    <value>Nie udało się zalogować. Spróbuj później.</value>
+  </data>
+  <data name="Controls_RequireSignIn_NoButton.Content" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Controls_RequireSignIn_ProcessIndicator.Text" xml:space="preserve">
+    <value>Logowanie...</value>
+  </data>
+  <data name="Controls_RequireSignIn_SuccessHeader.Text" xml:space="preserve">
+    <value>Zalogowano</value>
+  </data>
+  <data name="Controls_RequireSignIn_SuccessMessage.Text" xml:space="preserve">
+    <value>Zalogowano. Operacja zostanie kontynuowana.</value>
+  </data>
+  <data name="Controls_CoinsUI_Hint.Text" xml:space="preserve">
+    <value>Nie masz wystarczającej ilości monet.
+Kup więcej by kontynuować.</value>
+  </data>
+  <data name="Controls_RequireSignIn_FirstRun_FailureHeader.Text" xml:space="preserve">
+    <value>Wystąpił błąd</value>
+  </data>
+  <data name="Controls_RequireSignIn_FirstRun_FailureMessage.Text" xml:space="preserve">
+    <value>Nie udało się zalogować. Spróbuj później używając ustawień na systemowym 'pasku zaklęć'.</value>
+  </data>
+  <data name="Controls_RequireSignIn_FirstRun_Header.Text" xml:space="preserve">
+    <value>Ta wersja jest już darmowa</value>
+  </data>
+  <data name="Controls_RequireSignIn_FirstRun_Message.Text" xml:space="preserve">
+    <value>Po wielu latach zdecydowałem się na udostępnienie tej gry za darmo. Oryginalna wersja była napisana na Windows 8, od tamtego czasu była efektywnie nieutrzymywana, więc błędy są więcej niż spodziewane. W międzyczasie wyszedł Windows 10, na którym nie działała zbyt dobrze (o ile w ogóle) a ja zdążyłem usunąć serwery. Doszedłem do wniosku, że nie ma sensu, by ponad rok mojej pracy poszedł całkowicie na marne, stąd w końcu się zmobilizowałem, by zaktualizować grę do Windows 10, usunąć płatności i dodać wszystkie stworzone paczki. Kod gry dostępny jest na moim GitHubie (do znalezienia na mojej stronie w menu "O GRZE").
+
+Enjoy!</value>
+  </data>
+  <data name="Controls_RequireSignIn_FirstRun_SuccessHeader.Text" xml:space="preserve">
+    <value>Zalogowano</value>
+  </data>
+  <data name="Controls_RequireSignIn_FirstRun_SuccessMessage.Text" xml:space="preserve">
+    <value>Zalogowano. Od teraz możesz pobierać nowe paczki ze Sklepu gry.</value>
+  </data>
+  <data name="Controls_AppInfo_PrivacyStatement_PaneName" xml:space="preserve">
+    <value>Polityka prywatności</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_AccountHeader.Text" xml:space="preserve">
+    <value>Konto</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_PaneName" xml:space="preserve">
+    <value>Ustawienia &amp; konto</value>
+  </data>
+  <data name="Pages_TutorialPage_Header.Text" xml:space="preserve">
+    <value>Samouczek</value>
+  </data>
+  <data name="Pages_MainMenu_TutorialButton.Content" xml:space="preserve">
+    <value>SAMOUCZEK</value>
+  </data>
+  <data name="Pages_StorePage_BoardInfo_Boards_3" xml:space="preserve">
+    <value>plansz</value>
+    <comment>Plural form 2</comment>
+  </data>
+  <data name="Pages_StorePage_BoardInfo_CreatedBy_3" xml:space="preserve">
+    <value>których autorem jest</value>
+    <comment>Plural form 2</comment>
+  </data>
+  <data name="Pages_StorePage_ClickToBuyButton.Text" xml:space="preserve">
+    <value>Kliknij, by kupić za</value>
+  </data>
+  <data name="Pages_StorePage_ClickToOpenButton.Text" xml:space="preserve">
+    <value>Kliknij, by otworzyć</value>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronized1_3" xml:space="preserve">
+    <value>Pobrano {0} paczek.</value>
+    <comment>Plural form 2</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronized2_3" xml:space="preserve">
+    <value>Są one dostępne w menu.</value>
+    <comment>Plural form 1/2</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors1_3" xml:space="preserve">
+    <value>Pobrano {0} paczek.</value>
+    <comment>Plural form 2</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors2_3" xml:space="preserve">
+    <value>Nie udało się pobrać {1} paczek.</value>
+    <comment>Plural form 1/2</comment>
+  </data>
+  <data name="Platform_Notifications_PacksSynchronizedWithErrors3_3" xml:space="preserve">
+    <value>Są one dostępne w menu.</value>
+    <comment>Plural form 1/2</comment>
+  </data>
+  <data name="Controls_RequireSignIn_FirstRunFullVersion_Header.Text" xml:space="preserve">
+    <value>Ta wersja jest już darmowa</value>
+  </data>
+  <data name="Controls_RequireSignIn_FirstRunFullVersion_Message.Text" xml:space="preserve">
+    <value>Ponieważ zakupiłaś/eś pełną wersję gry zanim stała się darmowa, wszystkie funkcje są odblokowane. Dodatkowo możesz otrzymać darmowe monety(do spożytkowania w Sklepie gry), lecz by je dostać, musisz się zalogować. Czy chcesz to zrobić teraz?</value>
+  </data>
+  <data name="Controls_SettingsAndAccount_ErrorMessage.Text" xml:space="preserve">
+    <value>Wystąpił błąd, spróbuj ponownie później.</value>
+  </data>
+  <data name="Pages_DesignerList_AppBar_LinkPackWithGame.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Połącz z grą</value>
+  </data>
+  <data name="Platform_Notifications_PackIsEmpty" xml:space="preserve">
+    <value>Paczka, którą próbujesz dodać do gry jest pusta, przez co nie nadaje się do dodania.</value>
+  </data>
+  <data name="Platform_Notifications_PackIsEmptyTitle" xml:space="preserve">
+    <value>Paczka jest pusta</value>
+  </data>
+  <data name="Pages_GameList_PackType_Linked" xml:space="preserve">
+    <value>Ta paczka jest połączona z designerem. Zmiany w niej dokonane będą automatycznie kopiowane. Usunięcie jej nie spowoduje usunięcia z designera.</value>
+  </data>
+  <data name="Controls_BugReporting_Message.Height" xml:space="preserve">
+    <value>50</value>
+  </data>
+  <data name="Controls_CoinsUI_ApiError.Height" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="Controls_CoinsUI_NoMoreConsumables.Height" xml:space="preserve">
+    <value>80</value>
+  </data>
+  <data name="Pages_GamePage_AppBar_ZoomBoard.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Przybliżenie planszy</value>
+  </data>
+  <data name="Pages_DesignerPage_AppBar_ZoomBoard.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Przybliżenie planszy</value>
+  </data>
+  <data name="Controls_CoinsUI_PurchaseCompleteCoinsAmount.Text" xml:space="preserve">
+    <value>Aktualnie posiadasz</value>
+  </data>
+  <data name="Controls_CoinsUI_ForPrice.Text" xml:space="preserve">
+    <value>za</value>
+  </data>
+  <data name="Pages_TutorialPage_SnappedViewMessage.Text" xml:space="preserve">
+    <value>By wyświetlić samouczek, przesuń grę na pełny ekran.</value>
+  </data>
+  <data name="Controls_AppInfo_Main.SettingsName" xml:space="preserve">
+    <value>Ustawienia</value>
+  </data>
+  <data name="Pages_MainMenu_SettingsButton.Content" xml:space="preserve">
+    <value>USTAWIENIA</value>
+  </data>
+  <data name="Controls_AppInfo_Help_Pane.SettingsName" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="Pages_MainMenu_AboutButton.Content" xml:space="preserve">
+    <value>O GRZE</value>
+  </data>
+</root>

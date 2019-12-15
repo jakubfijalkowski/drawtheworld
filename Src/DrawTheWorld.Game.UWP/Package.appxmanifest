@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap mp">
+
+  <Identity Name="44273JakubFijakowski.DrawtheWorld" Publisher="CN=5DBDF69A-8B0A-4AED-A5CB-72D145A80FF7" Version="1.7.11.0" />
+
+  <mp:PhoneIdentity PhoneProductId="22b84240-5a32-4ec4-9c95-5afdf81175ef" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>Draw the World</DisplayName>
+    <PublisherDisplayName>Jakub Fijałkowski</PublisherDisplayName>
+    <Logo>Assets\Images\Logos\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="DrawTheWorld.Game.App">
+      <uap:VisualElements
+        DisplayName="Draw the World"
+        Square150x150Logo="Assets\Images\Logos\Logo.png"
+        Square44x44Logo="Assets\Images\Logos\SmallLogo.png"
+        Description="ms-resource:Manifest_GameDescription"
+        BackgroundColor="#7EBCF5">
+        <uap:DefaultTile Wide310x150Logo="Assets\Images\Logos\WideLogo.png" ShortName="Draw the World"  Square310x310Logo="Assets\Images\Logos\Square310x310Logo.png" Square71x71Logo="Assets\Images\Logos\Square71x71Logo.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="Assets\Images\Logos\SplashScreen.png" BackgroundColor="#7EBCF5" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/>
+          <uap:Rotation Preference="portrait"/>
+          <uap:Rotation Preference="landscapeFlipped"/>
+          <uap:Rotation Preference="portraitFlipped"/></uap:InitialRotationPreference>
+      </uap:VisualElements>
+      <Extensions>
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="dtw">
+            <uap:SupportedFileTypes>
+              <uap:FileType>.dtw</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>ms-resource:Manifest_FileTypeDisplayName</uap:DisplayName>
+            <uap:Logo>Assets/Images/Logos/IconicLogo.png</uap:Logo>
+            <uap:EditFlags OpenIsSafe="true"/>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+</Package>

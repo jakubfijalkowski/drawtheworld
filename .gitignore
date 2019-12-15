@@ -1,0 +1,23 @@
+.vs
+[bB]in
+[oO]bj
+[pP]ackages
+[dD]eploy
+[bB]uild
+*.user
+*.suo
+*.bat
+TestResult.xml
+*.VisualState.xml
+*.ncrunchsolution
+*.ncrunchproject
+*.cache
+*.crunchsolution.cache
+*.log
+*.pfx
+AppSettings.config
+*Web Deploy*
+*.sdf
+*.opensdf
+*.vcxproj.filters
+DrawTheWorld.Game.GDF.dll

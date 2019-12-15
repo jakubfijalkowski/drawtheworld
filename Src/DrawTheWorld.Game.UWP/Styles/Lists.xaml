@@ -1,0 +1,635 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls">
+	
+	<LinearGradientBrush x:Key="ListPageBackground" StartPoint="0,0" EndPoint="0,1">
+		<GradientStop Offset="0" Color="#FFB6D7F2" />
+		<GradientStop Offset="1" Color="#FFAEC4DF" />
+	</LinearGradientBrush>
+
+	<Style x:Key="FullScreenTextStyle" TargetType="local:TextBlockWithShadow">
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="FontStyle" Value="Italic" />
+		<Setter Property="FontSize" Value="32" />
+
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="ShadowBrush" Value="#FF33628F" />
+
+		<Setter Property="IsTabStop" Value="False" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="TextAlignment" Value="Center" />
+		<Setter Property="Margin" Value="10" />
+	</Style>
+
+	<Style x:Key="GameStatisticsTextStyle" TargetType="local:TextBlockWithShadow">
+		<Setter Property="Margin" Value="5" />
+		<Setter Property="VerticalAlignment" Value="Center" />
+		<Setter Property="HorizontalAlignment" Value="Right" />
+
+		<Setter Property="FontWeight" Value="Normal" />
+		<Setter Property="FontFamily" Value="/Assets/Fonts/Jura/Jura-Regular.ttf#Jura" />
+		<Setter Property="FontSize" Value="16" />
+
+		<Setter Property="Foreground" Value="#FF476B99" />
+		<Setter Property="ShadowBrush" Value="White" />
+	</Style>
+
+	<Style x:Key="PackHeaderStyle" TargetType="local:TextBlockWithShadow">
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="FontStyle" Value="Italic" />
+		<Setter Property="FontSize" Value="48" />
+
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="ShadowBrush" Value="#FF33628F" />
+
+		<Setter Property="IsTabStop" Value="False" />
+
+		<Setter Property="TextWrapping" Value="NoWrap" />
+	</Style>
+
+	<Style x:Key="UnselectedBoardTextStyle" TargetType="local:TextBlockWithShadow">
+		<Setter Property="FontFamily" Value="/Assets/Fonts/Jura/Jura-Regular.ttf#Jura" />
+		<Setter Property="FontSize" Value="20" />
+
+		<Setter Property="Foreground" Value="#FF405873" />
+		<Setter Property="ShadowBrush" Value="White" />
+
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="TextAlignment" Value="Center" />
+		<Setter Property="Height" Value="20" />
+	</Style>
+
+	<Style x:Key="SelectedBoardTextStyle" TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource UnselectedBoardTextStyle}">
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="ShadowBrush" Value="#FF1C0552" />
+	</Style>
+
+	<Style x:Key="PackSummaryNameStyle" TargetType="local:TextBlockWithShadow">
+		<Setter Property="FontFamily" Value="/Assets/Fonts/Jura/Jura-Medium.ttf#Jura" />
+		<Setter Property="FontWeight" Value="Medium" />
+		<Setter Property="FontSize" Value="20" />
+		<Setter Property="TextAlignment" Value="Center" />
+
+		<Setter Property="Foreground" Value="#FF405873" />
+		<Setter Property="ShadowBrush" Value="White" />
+		<Setter Property="IsTabStop" Value="False" />
+	</Style>
+
+	<Style x:Key="PackSummaryStyle" TargetType="GridViewItem">
+		<Setter Property="Width" Value="183" />
+		<Setter Property="Height" Value="198" />
+		<Setter Property="Margin" Value="10" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="GridViewItem">
+					<Grid>
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualStateGroup.Transitions>
+									<VisualTransition From="Normal" To="PointerOver">
+										<Storyboard>
+											<DoubleAnimation Duration="0:0:0.5" From="-0.3" To="1.0" Storyboard.TargetName="FirstStop" Storyboard.TargetProperty="Offset" EnableDependentAnimation="True" />
+											<DoubleAnimation Duration="0:0:0.5" From="0.0" To="1.3" Storyboard.TargetName="SecondSecond" Storyboard.TargetProperty="Offset" EnableDependentAnimation="True" />
+											<DoubleAnimation Duration="0:0:0.5" From="0.3" To="1.6" Storyboard.TargetName="ThirdSecond" Storyboard.TargetProperty="Offset" EnableDependentAnimation="True" />
+										</Storyboard>
+									</VisualTransition>
+								</VisualStateGroup.Transitions>
+
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="PointerOver" />
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="SelectionStates">
+								<VisualState x:Name="Selected">
+									<Storyboard>
+										<DoubleAnimation Duration="0:0:0.1" To="1" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Opacity" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="SelectedSwiping">
+									<Storyboard>
+										<DoubleAnimation Duration="0:0:0.1" To="1" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Opacity" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="SelectedUnfocused">
+									<Storyboard>
+										<DoubleAnimation Duration="0:0:0.1" To="1" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Opacity" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unselected">
+									<Storyboard>
+										<DoubleAnimation Duration="0:0:0.1" To="0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Opacity" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="UnselectedSwiping">
+									<Storyboard>
+										<DoubleAnimation Duration="0:0:0.1" To="0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Opacity" />
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="FocusStates">
+								<VisualState x:Name="Focused">
+									<Storyboard>
+										<DoubleAnimation Duration="0:0:0.1" To="1" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Opacity" />
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unfocused" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+
+						<Image Source="/Assets/Images/Lists/PackFolders.png" Margin="27,0,0,0" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Left" />
+						<Grid x:Name="SelectedBackground" Margin="16,29,18,15" Opacity="0">
+							<Rectangle RadiusX="21" RadiusY="21">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+										<GradientStop Offset="0" Color="White" />
+										<GradientStop Offset="0.3" Color="Transparent" />
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<Rectangle RadiusX="21" RadiusY="21">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+										<GradientStop Offset="0" Color="White" />
+										<GradientStop Offset="0.3" Color="Transparent" />
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<Rectangle RadiusX="21" RadiusY="21">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+										<GradientStop Offset="0" Color="White" />
+										<GradientStop Offset="0.3" Color="Transparent" />
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+							<Rectangle RadiusX="21" RadiusY="21">
+								<Rectangle.Fill>
+									<LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+										<GradientStop Offset="0" Color="White" />
+										<GradientStop Offset="0.3" Color="Transparent" />
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+							</Rectangle>
+						</Grid>
+						<Rectangle RadiusX="21" RadiusY="21" Margin="16,29,18,15">
+							<Rectangle.Fill>
+								<LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+									<GradientStop x:Name="FirstStop" Offset="1" Color="Transparent" />
+									<GradientStop x:Name="SecondSecond" Offset="1.3" Color="White" />
+									<GradientStop x:Name="ThirdSecond" Offset="1.6" Color="Transparent" />
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+						</Rectangle>
+						<Image Source="/Assets/Images/Lists/Pack.png" Margin="0,12,0,0" Stretch="None" VerticalAlignment="Top" HorizontalAlignment="Left" />
+						<ContentPresenter Margin="30,43,32,32" VerticalAlignment="Center" HorizontalAlignment="Center" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="GameBoardGridViewItemStyle" TargetType="GridViewItem">
+		<Setter Property="Margin" Value="10" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="GridViewItem">
+					<Grid Width="210" Height="206">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="SelectionStates">
+								<VisualState x:Name="Selected">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedBorder" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="SelectedUnfocused">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedBorder" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unselected" />
+								<VisualState x:Name="UnselectedSwiping" />
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="FocusStates">
+								<VisualState x:Name="Focused">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedBorder" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unfocused" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="166" />
+							<RowDefinition Height="40" />
+						</Grid.RowDefinitions>
+
+						<Image Grid.Row="0" Source="/Assets/Images/Lists/NotFinished.png" Margin="5,5,5,1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Stretch="Uniform"
+							   Visibility="{Binding IsNotFinished, Converter={StaticResource BoolToVisibility}}" />
+						<Rectangle Grid.Row="0" Margin="5,5,5,1" Fill="White"
+							   Visibility="{Binding IsFinished, Converter={StaticResource BoolToVisibility}}" />
+						<Image Grid.Row="0" Source="{Binding Thumbnail}" Margin="5,5,5,1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Stretch="Uniform"
+							   Visibility="{Binding IsFinished, Converter={StaticResource BoolToVisibility}}" />
+						<Border x:Name="UnselectedBorder" Grid.Row="0" BorderThickness="1" BorderBrush="#FF6E7E93" Margin="4,4,4,0"
+								Opacity="{Binding IsFinished, Converter={StaticResource BoolToDouble}}"/>
+
+						<Image x:Name="SelectedBackground" Source="/Assets/Images/Lists/SelectedFrame.png" Grid.RowSpan="2" Visibility="Collapsed" />
+
+						<StackPanel x:Name="UnselectedDescription" Grid.Row="1" HorizontalAlignment="Center">
+							<StackPanel.Resources>
+								<Style TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource UnselectedBoardTextStyle}" />
+							</StackPanel.Resources>
+							<local:TextBlockWithShadow Text="?" Visibility="{Binding IsNotFinished, Converter={StaticResource BoolToVisibility}}" />
+							<local:TextBlockWithShadow Text="{Binding Data.Name.MainTranslation}" Visibility="{Binding IsFinished, Converter={StaticResource BoolToVisibility}}" />
+							
+							<Grid HorizontalAlignment="Center" Height="20">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="94.5" />
+									<ColumnDefinition Width="21" />
+									<ColumnDefinition Width="94.5" />
+								</Grid.ColumnDefinitions>
+								<local:TextBlockWithShadow Grid.Column="0" Text="{Binding Data.Size.Width, Mode=OneTime}" HorizontalAlignment="Right" />
+								<local:TextBlockWithShadow Grid.Column="1" Text="&#160;x&#160;" />
+								<local:TextBlockWithShadow Grid.Column="2" Text="{Binding Data.Size.Height, Mode=OneTime}" HorizontalAlignment="Left" />
+							</Grid>
+						</StackPanel>
+						
+						<StackPanel x:Name="SelectedDescription" Grid.Row="1" HorizontalAlignment="Center" Visibility="Collapsed">
+							<StackPanel.Resources>
+								<Style TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource SelectedBoardTextStyle}" />
+							</StackPanel.Resources>
+							<local:TextBlockWithShadow Text="?" Visibility="{Binding IsNotFinished, Converter={StaticResource BoolToVisibility}}" />
+							<local:TextBlockWithShadow Text="{Binding Data.Name.MainTranslation}" Visibility="{Binding IsFinished, Converter={StaticResource BoolToVisibility}}" />
+
+							<Grid HorizontalAlignment="Center" Height="20">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="94.5" />
+									<ColumnDefinition Width="21" />
+									<ColumnDefinition Width="94.5" />
+								</Grid.ColumnDefinitions>
+								<local:TextBlockWithShadow Grid.Column="0" Text="{Binding Data.Size.Width, Mode=OneTime}" HorizontalAlignment="Right" />
+								<local:TextBlockWithShadow Grid.Column="1" Text="&#160;x&#160;" />
+								<local:TextBlockWithShadow Grid.Column="2" Text="{Binding Data.Size.Height, Mode=OneTime}" HorizontalAlignment="Left" />
+							</Grid>
+						</StackPanel>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="FinishedGameBoardGridViewItemStyle" TargetType="GridViewItem">
+		<Setter Property="Margin" Value="10" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="GridViewItem">
+					<Grid Width="210" Height="206">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="SelectionStates">
+								<VisualState x:Name="PointerOver">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedBorder" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Normal" />
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="FocusStates">
+								<VisualState x:Name="Focused">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedBorder" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unfocused" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="166" />
+							<RowDefinition Height="40" />
+						</Grid.RowDefinitions>
+
+						<Rectangle Grid.Row="0" Margin="5,5,5,1" Fill="White" />
+						<Image Grid.Row="0" Source="{Binding Thumbnail}" Margin="5,5,5,1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Stretch="Uniform" />
+						<Border x:Name="UnselectedBorder" Grid.Row="0" BorderThickness="1" BorderBrush="#FF6E7E93" Margin="4,4,4,0" />
+
+						<Image x:Name="SelectedBackground" Source="/Assets/Images/Lists/SelectedFrame.png" Grid.RowSpan="2" Visibility="Collapsed" />
+
+						<StackPanel x:Name="UnselectedDescription" Grid.Row="1" HorizontalAlignment="Center">
+							<StackPanel.Resources>
+								<Style TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource UnselectedBoardTextStyle}" />
+							</StackPanel.Resources>
+							<local:TextBlockWithShadow Text="{Binding Data.Name.MainTranslation, Mode=OneTime}" />
+
+							<Grid HorizontalAlignment="Center" Height="20">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="94.5" />
+									<ColumnDefinition Width="21" />
+									<ColumnDefinition Width="94.5" />
+								</Grid.ColumnDefinitions>
+								<local:TextBlockWithShadow Grid.Column="0" Text="{Binding Data.Size.Width, Mode=OneTime}" HorizontalAlignment="Right" />
+								<local:TextBlockWithShadow Grid.Column="1" Text="&#160;x&#160;" />
+								<local:TextBlockWithShadow Grid.Column="2" Text="{Binding Data.Size.Height, Mode=OneTime}" HorizontalAlignment="Left" />
+							</Grid>
+						</StackPanel>
+
+						<StackPanel x:Name="SelectedDescription" Grid.Row="1" HorizontalAlignment="Center" Visibility="Collapsed">
+							<StackPanel.Resources>
+								<Style TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource SelectedBoardTextStyle}" />
+							</StackPanel.Resources>
+							<local:TextBlockWithShadow Text="{Binding Data.Name.MainTranslation, Mode=OneTime}" />
+
+							<Grid HorizontalAlignment="Center" Height="20">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="94.5" />
+									<ColumnDefinition Width="21" />
+									<ColumnDefinition Width="94.5" />
+								</Grid.ColumnDefinitions>
+								<local:TextBlockWithShadow Grid.Column="0" Text="{Binding Data.Size.Width, Mode=OneTime}" HorizontalAlignment="Right" />
+								<local:TextBlockWithShadow Grid.Column="1" Text="&#160;x&#160;" />
+								<local:TextBlockWithShadow Grid.Column="2" Text="{Binding Data.Size.Height, Mode=OneTime}" HorizontalAlignment="Left" />
+							</Grid>
+						</StackPanel>
+
+                        <ContentPresenter Background="Transparent" Grid.RowSpan="2" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="NotFinishedGameBoardGridViewItemStyle" TargetType="GridViewItem">
+		<Setter Property="Margin" Value="10" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="GridViewItem">
+					<Grid Width="210" Height="206">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="PointerOver">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Normal" />
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="FocusStates">
+								<VisualState x:Name="Focused">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unfocused" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="166" />
+							<RowDefinition Height="40" />
+						</Grid.RowDefinitions>
+
+						<Image Grid.Row="0" Source="/Assets/Images/Lists/NotFinished.png" Margin="5,5,5,1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Stretch="Uniform" />
+						<Image x:Name="SelectedBackground" Source="/Assets/Images/Lists/SelectedFrame.png" Grid.RowSpan="2" Visibility="Collapsed" />
+
+						<StackPanel x:Name="UnselectedDescription" Grid.Row="1" HorizontalAlignment="Center">
+							<StackPanel.Resources>
+								<Style TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource UnselectedBoardTextStyle}" />
+							</StackPanel.Resources>
+							<local:TextBlockWithShadow Text="?" />
+
+							<Grid HorizontalAlignment="Center" Height="20">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="94.5" />
+									<ColumnDefinition Width="21" />
+									<ColumnDefinition Width="94.5" />
+								</Grid.ColumnDefinitions>
+								<local:TextBlockWithShadow Grid.Column="0" Text="{Binding Data.Size.Width, Mode=OneTime}" HorizontalAlignment="Right" />
+								<local:TextBlockWithShadow Grid.Column="1" Text="&#160;x&#160;" />
+								<local:TextBlockWithShadow Grid.Column="2" Text="{Binding Data.Size.Height, Mode=OneTime}" HorizontalAlignment="Left" />
+							</Grid>
+						</StackPanel>
+
+						<StackPanel x:Name="SelectedDescription" Grid.Row="1" HorizontalAlignment="Center" Visibility="Collapsed">
+							<StackPanel.Resources>
+								<Style TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource SelectedBoardTextStyle}" />
+							</StackPanel.Resources>
+							<local:TextBlockWithShadow Text="?" />
+
+							<Grid HorizontalAlignment="Center" Height="20">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="94.5" />
+									<ColumnDefinition Width="21" />
+									<ColumnDefinition Width="94.5" />
+								</Grid.ColumnDefinitions>
+								<local:TextBlockWithShadow Grid.Column="0" Text="{Binding Data.Size.Width, Mode=OneTime}" HorizontalAlignment="Right" />
+								<local:TextBlockWithShadow Grid.Column="1" Text="&#160;x&#160;" />
+								<local:TextBlockWithShadow Grid.Column="2" Text="{Binding Data.Size.Height, Mode=OneTime}" HorizontalAlignment="Left" />
+							</Grid>
+						</StackPanel>
+
+                        <ContentPresenter Background="Transparent" Grid.RowSpan="2" />
+                    </Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="DesignerBoardGridViewItemStyle" TargetType="GridViewItem">
+		<Setter Property="Margin" Value="10" />
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="GridViewItem">
+					<Grid Width="210" Height="206">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="SelectionStates">
+								<VisualState x:Name="Selected">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedBorder" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="SelectedUnfocused">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedBorder" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unselected" />
+								<VisualState x:Name="UnselectedSwiping" />
+							</VisualStateGroup>
+							<VisualStateGroup x:Name="FocusStates">
+								<VisualState x:Name="Focused">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedBorder" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedBackground" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="UnselectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Duration="0:0:0" Storyboard.TargetName="SelectedDescription" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Unfocused" />
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="166" />
+							<RowDefinition Height="40" />
+						</Grid.RowDefinitions>
+
+						<Rectangle Grid.Row="0" Margin="5,5,5,1" Fill="White" />
+						<Image Grid.Row="0" Source="{Binding Thumbnail}" Margin="5,5,5,1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Stretch="Uniform" CacheMode="BitmapCache" />
+						<Border x:Name="UnselectedBorder" Grid.Row="0" BorderThickness="1" BorderBrush="#FF6E7E93" Margin="4,4,4,0" />
+						<Image x:Name="SelectedBackground" Source="/Assets/Images/Lists/SelectedFrame.png" Grid.RowSpan="2" Visibility="Collapsed" />
+
+						<StackPanel x:Name="UnselectedDescription" Grid.Row="1" HorizontalAlignment="Center">
+							<StackPanel.Resources>
+								<Style TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource UnselectedBoardTextStyle}" />
+							</StackPanel.Resources>
+							<local:TextBlockWithShadow Text="{Binding Name.MainTranslation}" />
+
+							<Grid HorizontalAlignment="Center" Height="20">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="94.5" />
+									<ColumnDefinition Width="21" />
+									<ColumnDefinition Width="94.5" />
+								</Grid.ColumnDefinitions>
+								<local:TextBlockWithShadow Grid.Column="0" Text="{Binding Size.Width, Mode=OneTime}" HorizontalAlignment="Right" />
+								<local:TextBlockWithShadow Grid.Column="1" Text="&#160;x&#160;" />
+								<local:TextBlockWithShadow Grid.Column="2" Text="{Binding Size.Height, Mode=OneTime}" HorizontalAlignment="Left" />
+							</Grid>
+						</StackPanel>
+
+						<StackPanel x:Name="SelectedDescription" Grid.Row="1" HorizontalAlignment="Center" Visibility="Collapsed">
+							<StackPanel.Resources>
+								<Style TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource SelectedBoardTextStyle}" />
+							</StackPanel.Resources>
+							<local:TextBlockWithShadow Text="{Binding Name.MainTranslation}" />
+
+							<Grid HorizontalAlignment="Center" Height="20">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="94.5" />
+									<ColumnDefinition Width="21" />
+									<ColumnDefinition Width="94.5" />
+								</Grid.ColumnDefinitions>
+								<local:TextBlockWithShadow Grid.Column="0" Text="{Binding Size.Width, Mode=OneTime}" HorizontalAlignment="Right" />
+								<local:TextBlockWithShadow Grid.Column="1" Text="&#160;x&#160;" />
+								<local:TextBlockWithShadow Grid.Column="2" Text="{Binding Size.Height, Mode=OneTime}" HorizontalAlignment="Left" />
+							</Grid>
+						</StackPanel>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<ItemsPanelTemplate x:Key="HorizontalWrapGrid">
+		<WrapGrid Orientation="Horizontal" />
+	</ItemsPanelTemplate>
+	
+</ResourceDictionary>

@@ -1,0 +1,52 @@
+﻿<UserControl
+	x:Class="DrawTheWorld.Game.Controls.SettingsAndAccount"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:flib="using:FLib.UI.Controls" xmlns:local="using:DrawTheWorld.Game.Controls">
+
+	<flib:SettingsPanel x:Name="SettingsPopup" x:Uid="Controls_SettingsAndAccount_Info" Opened="OnAccountInfoOpened">
+		<StackPanel>
+			<StackPanel.Resources>
+				<Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+					<Setter Property="Margin" Value="10" />
+					<Setter Property="FontSize" Value="25" />
+
+					<!-- TODO: make this button a little bit smaller -->
+					<Setter Property="Width" Value="200" />
+				</Style>
+			</StackPanel.Resources>
+
+			<local:TextBlockWithShadow x:Uid="Controls_SettingsAndAccount_MusicVolumeLabel" />
+			<Slider Minimum="0" Maximum="100" Value="{Binding Settings.PercentageMusicVolume, Mode=TwoWay}" />
+			<local:TextBlockWithShadow x:Uid="Controls_SettingsAndAccount_SoundsVolumeLabel" />
+			<Slider Minimum="0" Maximum="100" Value="{Binding Settings.PercentageSoundVolume, Mode=TwoWay}" />
+
+			<local:TextBlockWithShadow x:Uid="Controls_SettingsAndAccount_AccountHeader" Margin="0,50,0,0" FontWeight="Bold" />
+
+			<StackPanel Visibility="{Binding EffectiveSignIn, Converter={StaticResource BoolToVisibility}}">
+				<local:TextBlockWithShadow x:Uid="Controls_SettingsAndAccount_NotSignedIn" />
+				<Button x:Uid="Controls_SettingsAndAccount_SignInButton" Click="OnSignButtonPressed" Tag="In" />
+			</StackPanel>
+
+			<StackPanel Visibility="{Binding EffectiveSignOut, Converter={StaticResource BoolToVisibility}}">
+				<local:TextBlockWithShadow x:Uid="Controls_SettingsAndAccount_SignedIn" />
+				<local:TextBlockWithShadow Text="{Binding SignedAs}" FontWeight="Bold" HorizontalAlignment="Center" />
+
+				<StackPanel Orientation="Horizontal" Margin="5,30,0,0">
+					<local:TextBlockWithShadow x:Uid="Controls_SettingsAndAccount_CoinsAmountText" VerticalAlignment="Center" />
+					<local:TextBlockWithShadow Text="&#8734;" VerticalAlignment="Center" />
+					<Image Source="/Assets/Images/Other/Coin.png" Stretch="None" VerticalAlignment="Center" />
+				</StackPanel>
+			</StackPanel>
+
+			<StackPanel Visibility="{Binding DuringProcess, Converter={StaticResource BoolToVisibility}}">
+				<local:TextBlockWithShadow x:Uid="Controls_SettingsAndAccount_DuringProcess" />
+				<ProgressRing IsActive="True" Foreground="{StaticResource ThemeProgressRingBrush}" Width="40" Height="40" />
+			</StackPanel>
+
+			<local:TextBlockWithShadow x:Uid="Controls_SettingsAndAccount_ErrorMessage" Foreground="#FF9E0000"
+									   Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibility}}" />
+		</StackPanel>
+	</flib:SettingsPanel>
+
+</UserControl>

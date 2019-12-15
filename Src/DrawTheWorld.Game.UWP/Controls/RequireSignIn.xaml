@@ -1,0 +1,107 @@
+﻿<UserControl
+	x:Class="DrawTheWorld.Game.Controls.RequireSignIn"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:flib="using:FLib.UI.Controls" xmlns:local="using:DrawTheWorld.Game.Controls"
+	TabNavigation="Cycle">
+
+	<UserControl.Resources>
+		<Style TargetType="Button" BasedOn="{StaticResource DefaultButtonStyle}">
+			<Setter Property="Width" Value="150" />
+		</Style>
+	</UserControl.Resources>
+	
+	<flib:MessageDialog x:Name="Popup">
+		<Border>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_Header" Grid.Row="0" Grid.ColumnSpan="2" Margin="20,0,20,10" FontSize="30" FontWeight="Light">You have to be signed in</local:TextBlockWithShadow>
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_Message" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,10,10" FontWeight="SemiLight">
+					In order to perform this operation, you have to be signed in. Do you want to sign in now?
+				</local:TextBlockWithShadow>
+
+				<Button x:Uid="Controls_RequireSignIn_NoButton" Grid.Row="2" Grid.Column="1" Content="No" HorizontalAlignment="Left" Margin="10,10,0,10" Click="ClosePopup" />
+			</Grid>
+		</Border>
+		<Border>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FirstRun_Header" Grid.Row="0" Grid.ColumnSpan="2" Margin="20,0,20,10" FontSize="30" FontWeight="Light">Sign in</local:TextBlockWithShadow>
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FirstRun_Message" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,10,10" FontWeight="SemiLight">
+					This is your first run. In order to fully use the game, you have to be signed in. Do you want to do it now?
+				</local:TextBlockWithShadow>
+
+				<Button x:Uid="Controls_RequireSignIn_NoButton" Grid.Row="2" Grid.Column="1" Content="No" HorizontalAlignment="Left" Margin="10,10,0,10" Click="ClosePopup" />
+			</Grid>
+		</Border>
+		<Border>
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="Auto"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+				</Grid.RowDefinitions>
+
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FirstRunFullVersion_Header" Grid.Row="0" Grid.ColumnSpan="2" Margin="20,0,20,10" FontSize="30" FontWeight="Light">Sign in</local:TextBlockWithShadow>
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FirstRunFullVersion_Message" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,10,10" FontWeight="SemiLight">
+					Because you had purchased the full version of the game before it became free, all functions are unlocked and you 
+				</local:TextBlockWithShadow>
+
+				<Button x:Uid="Controls_RequireSignIn_NoButton" Grid.Row="2" Grid.Column="1" Content="No" HorizontalAlignment="Left" Margin="10,10,0,10" Click="ClosePopup" />
+			</Grid>
+		</Border>
+		<Border>
+			<StackPanel HorizontalAlignment="Center">
+				<ProgressRing Width="100" Height="100" Foreground="{StaticResource ThemeProgressRingBrush}" IsActive="True" />
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_ProcessIndicator">Signing in...</local:TextBlockWithShadow>
+			</StackPanel>
+		</Border>
+		<Border>
+			<StackPanel HorizontalAlignment="Center">
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_SuccessHeader" HorizontalAlignment="Center">Signed in</local:TextBlockWithShadow>
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_SuccessMessage" Foreground="#99000000">You are successfuly signed in. The desired operation will continue after you close the dialog.</local:TextBlockWithShadow>
+			</StackPanel>
+		</Border>
+		<Border>
+			<StackPanel HorizontalAlignment="Center">
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FirstRun_SuccessHeader" HorizontalAlignment="Center">Signed in</local:TextBlockWithShadow>
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FirstRun_SuccessMessage" Foreground="#99000000">You are successfuly signed in. You can download new packs from the Store.</local:TextBlockWithShadow>
+			</StackPanel>
+		</Border>
+		<Border>
+			<StackPanel HorizontalAlignment="Center">
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FailureHeader" HorizontalAlignment="Center">Error occurred</local:TextBlockWithShadow>
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FailureMessage" Foreground="#99000000">We were unable to sign you in. Try again later.</local:TextBlockWithShadow>
+			</StackPanel>
+		</Border>
+		<Border>
+			<StackPanel HorizontalAlignment="Center">
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FirstRun_FailureHeader" HorizontalAlignment="Center">Error occurred</local:TextBlockWithShadow>
+				<local:TextBlockWithShadow x:Uid="Controls_RequireSignIn_FirstRun_FailureMessage" Foreground="#99000000">We were unable to sign you in. Try again later using the Settings charm.</local:TextBlockWithShadow>
+			</StackPanel>
+		</Border>
+	</flib:MessageDialog>
+
+</UserControl>

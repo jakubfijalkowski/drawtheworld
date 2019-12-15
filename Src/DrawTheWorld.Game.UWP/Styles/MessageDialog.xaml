@@ -1,0 +1,121 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:flib="using:FLib.UI.Controls" xmlns:local="using:DrawTheWorld.Game.Controls"
+	xmlns:utils="using:FLib.UI.Utilities">
+
+    <x:Double x:Key="MessageDialogMaxWidth">768</x:Double>
+
+    <Style x:Key="MessageDialogGridStyle" TargetType="Grid">
+        <Setter Property="MaxWidth" Value="{StaticResource MessageDialogMaxWidth}" />
+    </Style>
+
+    <Style x:Key="MessageDialogStackPanelStyle" TargetType="StackPanel">
+        <Setter Property="MaxWidth" Value="{StaticResource MessageDialogMaxWidth}" />
+    </Style>
+
+    <Style x:Key="MessageDialogTextStyle" TargetType="local:TextBlockWithShadow">
+        <Setter Property="Foreground" Value="#FF4E7391" />
+        <Setter Property="ShadowBrush" Value="#A0FFFFFF" />
+
+        <Setter Property="FontFamily" Value="/Assets/Fonts/Exo/Exo-Regular.ttf#Exo" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+
+    <Style x:Key="MessageDialogContainerStyle" TargetType="Border">
+        <Setter Property="utils:StyleHelper.NestedStyles">
+            <Setter.Value>
+                <utils:StylesCollection>
+                    <x:String>MessageDialogGridStyle</x:String>
+                    <x:String>MessageDialogStackPanelStyle</x:String>
+                </utils:StylesCollection>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Padding" Value="20,20" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+
+    <Style x:Key="DefaultMessageDialogStyle" TargetType="flib:MessageDialog">
+        <Setter Property="utils:StyleHelper.NestedStyles">
+            <Setter.Value>
+                <utils:StylesCollection>
+                    <x:String>MessageDialogTextStyle</x:String>
+                    <x:String>MessageDialogContainerStyle</x:String>
+                </utils:StylesCollection>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="flib:MessageDialog">
+                    <Grid Background="#99ADCCE8">
+                        <Canvas x:Name="PART_HiddenContainer" />
+                        <Grid x:Name="PART_Container" Height="{Binding Height, ElementName=PART_Presenter}" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                            <Rectangle Fill="#CCFFFFFF" Margin="0,8" />
+                            <Image Source="/Assets/Images/Popups/MessageDialog.png" NineGrid="2,32" Stretch="Fill" />
+
+                            <ContentPresenter x:Name="PART_Presenter" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PopupMessageDialogStyle" TargetType="flib:MessageDialog">
+        <Setter Property="utils:StyleHelper.NestedStyles">
+            <Setter.Value>
+                <utils:StylesCollection>
+                    <x:String>MessageDialogTextStyle</x:String>
+                    <x:String>MessageDialogContainerStyle</x:String>
+                </utils:StylesCollection>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="flib:MessageDialog">
+                    <Grid Background="#99ADCCE8">
+                        <Canvas x:Name="PART_HiddenContainer" />
+                        <Grid x:Name="PART_Container" Height="{Binding Height, ElementName=PART_Presenter}" Width="650" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Rectangle Fill="#CCFFFFFF" RadiusX="21" RadiusY="21" Margin="8" />
+                            <Image Source="/Assets/Images/Popups/NormalWithShadow.png" NineGrid="32" Stretch="Fill" />
+
+                            <ContentPresenter x:Name="PART_Presenter" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="OriginalMessageDialogStyle" TargetType="flib:MessageDialog">
+        <Setter Property="Background" Value="#7FFFFFFF" />
+        <Setter Property="Foreground" Value="White" />
+
+        <Setter Property="Padding" Value="80,20" />
+
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="flib:MessageDialog">
+                    <Border Background="{TemplateBinding Background}">
+                        <Border x:Name="PART_Container" Background="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <ContentPresenter x:Name="PART_Presenter" Margin="{TemplateBinding Padding}" />
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="flib:MessageDialog" BasedOn="{StaticResource DefaultMessageDialogStyle}" />
+
+</ResourceDictionary>

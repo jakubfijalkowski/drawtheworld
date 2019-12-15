@@ -1,0 +1,165 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:local="using:FLib.UI.Controls"
+					xmlns:utils="using:FLib.UI.Utilities"
+					xmlns:conv="using:FLib.UI.Data.Converters">
+
+	<conv:ColorToSolidBrush x:Key="ColorToSolidBrush" />
+	<SolidColorBrush x:Key="DefaultBorderBrush">DarkGray</SolidColorBrush>
+	<Thickness x:Key="DefaultBorder">1</Thickness>
+	<Thickness x:Key="DefaultMargin">2.5</Thickness>
+
+	<ImageBrush x:Key="LeftArrowBrush" Stretch="Uniform" ImageSource="/FLib.UI/Assets/Arrow.png" />
+	<ImageBrush x:Key="RightArrowBrush" Stretch="Uniform" ImageSource="/FLib.UI/Assets/Arrow.png">
+		<ImageBrush.RelativeTransform>
+			<RotateTransform Angle="180" CenterX="0.5" CenterY="0.5" />
+		</ImageBrush.RelativeTransform>
+	</ImageBrush>
+	<ImageBrush x:Key="TopArrowBrush" Stretch="Uniform" ImageSource="/FLib.UI/Assets/Arrow.png">
+		<ImageBrush.RelativeTransform>
+			<RotateTransform Angle="90" CenterX="0.5" CenterY="0.5" />
+		</ImageBrush.RelativeTransform>
+	</ImageBrush>
+	<ImageBrush x:Key="BottomArrowBrush" Stretch="Uniform" ImageSource="/FLib.UI/Assets/Arrow.png">
+		<ImageBrush.RelativeTransform>
+			<RotateTransform Angle="-90" CenterX="0.5" CenterY="0.5" />
+		</ImageBrush.RelativeTransform>
+	</ImageBrush>
+
+	<Style x:Key="VerticalSpectrumSliderThumb" TargetType="Thumb">
+		<Setter Property="MinWidth" Value="7" />
+		<Setter Property="MinHeight" Value="7" />
+
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Height" Value="7" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Thumb">
+					<Grid Background="{TemplateBinding Background}" HorizontalAlignment="Stretch">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+
+						<Rectangle Grid.Column="0" HorizontalAlignment="Left" Fill="{StaticResource LeftArrowBrush}" Width="{TemplateBinding Height}" />
+						<Rectangle Grid.Column="1" HorizontalAlignment="Right" Fill="{StaticResource RightArrowBrush}" Width="{TemplateBinding Height}" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="HorizontalSpectrumSliderThumb" TargetType="Thumb">
+		<Setter Property="MinWidth" Value="7" />
+		<Setter Property="MinHeight" Value="7" />
+
+		<Setter Property="Background" Value="Transparent" />
+		<Setter Property="Width" Value="7" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="Thumb">
+					<Grid Background="{TemplateBinding Background}" HorizontalAlignment="Stretch">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*" />
+							<RowDefinition Height="*" />
+						</Grid.RowDefinitions>
+
+						<Rectangle Grid.Row="0" VerticalAlignment="Top" Fill="{StaticResource TopArrowBrush}" Height="{TemplateBinding Width}" />
+						<Rectangle Grid.Row="1" VerticalAlignment="Bottom" Fill="{StaticResource BottomArrowBrush}" Height="{TemplateBinding Width}" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	
+	<ControlTemplate x:Key="SpectrumSliderTemplate" TargetType="local:SpectrumSlider">
+		<Grid>
+			<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+				<Rectangle x:Name="PART_Spectrum" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
+			</Border>
+			
+			<Canvas x:Name="PART_HorizontalSlider" Visibility="Collapsed">
+				<Thumb x:Name="PART_HorizontalThumb" Style="{StaticResource HorizontalSpectrumSliderThumb}" />
+			</Canvas>
+
+			<Canvas x:Name="PART_VerticalSlider">
+				<Thumb x:Name="PART_VerticalThumb" Style="{StaticResource VerticalSpectrumSliderThumb}" />
+			</Canvas>
+		</Grid>
+	</ControlTemplate>
+
+	<Style TargetType="local:SpectrumSlider">
+		<Setter Property="Foreground" Value="Transparent"/>
+		<Setter Property="Background" Value="Transparent" />
+
+		<Setter Property="BorderBrush" Value="{StaticResource DefaultBorderBrush}" />
+		<Setter Property="BorderThickness" Value="{StaticResource DefaultBorder}" />
+
+		<Setter Property="Template" Value="{StaticResource SpectrumSliderTemplate}" />
+	</Style>
+
+	<Style TargetType="local:ColorCanvas">
+		<Setter Property="BorderBrush" Value="{StaticResource DefaultBorderBrush}" />
+		<Setter Property="BorderThickness" Value="{StaticResource DefaultBorder}" />
+
+		<Setter Property="MinWidth" Value="225" />
+		<Setter Property="MinHeight" Value="105" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="local:ColorCanvas">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="8*" />
+							<ColumnDefinition Width="1*" />
+						</Grid.ColumnDefinitions>
+
+						<Border Grid.Column="0" Margin="{StaticResource DefaultMargin}"
+								BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+							<local:CustomCanvas x:Name="PART_ColorShadingCanvas" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+												utils:ClipToBounds.Clip="True">
+								<Rectangle Width="{Binding CorrectActualWidth, ElementName=PART_ColorShadingCanvas}"
+										   Height="{Binding CorrectActualHeight, ElementName=PART_ColorShadingCanvas}"
+										   Fill="{Binding RGBColor, ElementName=PART_SpectrumSlider, Converter={StaticResource ColorToSolidBrush}}" />
+								<Rectangle Width="{Binding CorrectActualWidth, ElementName=PART_ColorShadingCanvas, Mode=OneWay}"
+										   Height="{Binding CorrectActualHeight, ElementName=PART_ColorShadingCanvas, Mode=OneWay}">
+									<Rectangle.Fill>
+										<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+											<GradientStop Offset="0" Color="#FFFFFFFF" />
+											<GradientStop Offset="1" Color="#00FFFFFF" />
+										</LinearGradientBrush>
+									</Rectangle.Fill>
+								</Rectangle>
+
+								<Rectangle Width="{Binding CorrectActualWidth, ElementName=PART_ColorShadingCanvas, Mode=OneWay}"
+										   Height="{Binding CorrectActualHeight, ElementName=PART_ColorShadingCanvas, Mode=OneWay}">
+									<Rectangle.Fill>
+										<LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+											<GradientStop Offset="0" Color="#FF000000" />
+											<GradientStop Offset="1" Color="#00000000" />
+										</LinearGradientBrush>
+									</Rectangle.Fill>
+								</Rectangle>
+
+								<Canvas x:Name="PART_ColorSelector" Width="10" Height="10" IsHitTestVisible="False">
+									<Ellipse StrokeThickness="3" Stroke="#FFFFFFFF" IsHitTestVisible="False"
+											 Width="{Binding Width, ElementName=PART_ColorSelector, Mode=OneTime}"
+											 Height="{Binding Height, ElementName=PART_ColorSelector, Mode=OneTime}" />
+									<Ellipse StrokeThickness="1" Stroke="#FF000000" IsHitTestVisible="False"
+											 Width="{Binding Width, ElementName=PART_ColorSelector, Mode=OneTime}"
+											 Height="{Binding Height, ElementName=PART_ColorSelector, Mode=OneTime}" />
+								</Canvas>
+							</local:CustomCanvas>
+						</Border>
+
+						<local:SpectrumSlider x:Name="PART_SpectrumSlider" Grid.Column="1"
+											  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"
+											  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="{StaticResource DefaultMargin}" />
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>

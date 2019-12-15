@@ -1,0 +1,76 @@
+﻿<page:UIPage
+	x:Class="DrawTheWorld.Game.Pages.DesignerPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:page="using:DrawTheWorld.Game.Utilities"
+	xmlns:local="using:DrawTheWorld.Game.Controls"
+	xmlns:colorPicker="using:DrawTheWorld.Game.Controls.ColorPicker"
+	xmlns:flib="using:FLib.UI.Controls"
+	PageBackground="{StaticResource GamePageBackground}">
+	
+	<Grid>
+		<local:MainGame x:Name="MainGame" />
+
+		<flib:SettingsPanel x:Name="BoardSettings" x:Uid="Pages_DesignerPage_BoardSettings" Closed="CommitSettings" Opened="UpdateSettings">
+			<Grid>
+				<colorPicker:SettingsPicker x:Name="ColorPicker" />
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Grid Grid.Row="0">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<local:TextBlockWithShadow x:Uid="Pages_DesignerPage_BoardNameLabel" VerticalAlignment="Center" Margin="3" />
+						<ComboBox Grid.Column="1" ItemsSource="{CustomResource Settings.UserLanguages}" SelectedItem="{Binding Name.EditedLanguage, Mode=TwoWay}" />
+					</Grid>
+					<TextBox Grid.Row="1" Text="{Binding Name.EditedTranslation, Mode=TwoWay}" />
+					<local:TextBlockWithShadow x:Uid="Pages_DesignerPage_BoardSizeLabel" Grid.Row="2" />
+					<TextBox x:Name="BoardSizeTextBox" Grid.Row="3" />
+					<local:TextBlockWithShadow x:Uid="Pages_DesignerPage_BoardPaletteLabel" Grid.Row="4" />
+					<ScrollViewer Grid.Row="5" Padding="0,0,1,0" VerticalScrollMode="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch">
+						<flib:UniformGrid x:Name="Palette" Columns="4" Rows="8" Height="584" VerticalAlignment="Top">
+							<flib:UniformGrid.Resources>
+								<Style TargetType="Button">
+									<Setter Property="Width" Value="71" />
+									<Setter Property="Height" Value="71" />
+									<Setter Property="Margin" Value="1" />
+
+									<Setter Property="Template">
+										<Setter.Value>
+											<ControlTemplate TargetType="Button">
+												<Grid>
+													<Image Source="/Assets/Images/ColorPicker/SettingsEmpty.png" Visibility="{Binding Tag.IsColorVisibleInverse, RelativeSource={RelativeSource TemplatedParent}}" />
+													<Rectangle Fill="{TemplateBinding Background}" RadiusX="16" RadiusY="16" Margin="2" />
+													<Image Source="/Assets/Images/ColorPicker/SettingsShadow.png" Visibility="{Binding Tag.IsColorVisible, RelativeSource={RelativeSource TemplatedParent}}" />
+												</Grid>
+											</ControlTemplate>
+										</Setter.Value>
+									</Setter>
+								</Style>
+							</flib:UniformGrid.Resources>
+						</flib:UniformGrid>
+					</ScrollViewer>
+				</Grid>
+			</Grid>
+		</flib:SettingsPanel>
+	</Grid>
+
+	<Page.BottomAppBar>
+		<local:CustomAppBar>
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+				<Button x:Name="ZoomButton" x:Uid="Pages_DesignerPage_AppBar_ZoomBoard" Style="{StaticResource ZoomAppBarButtonStyle}" />
+				<Button x:Uid="Pages_DesignerPage_AppBar_Settings" Style="{StaticResource SettingsAppBarButtonStyle}" Click="OpenSettings" />
+				<Button x:Uid="Pages_DesignerPage_AppBar_Discard" Style="{StaticResource DiscardAppBarButtonStyle}" Click="DiscardChanges" />
+				<Button x:Uid="Pages_DesignerPage_AppBar_Save" Style="{StaticResource SaveAppBarButtonStyle}" Click="SaveBoard" />
+			</StackPanel>
+		</local:CustomAppBar>
+	</Page.BottomAppBar>
+</page:UIPage>

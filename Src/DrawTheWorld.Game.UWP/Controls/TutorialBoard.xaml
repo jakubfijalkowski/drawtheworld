@@ -1,0 +1,67 @@
+﻿<UserControl
+    x:Class="DrawTheWorld.Game.Controls.TutorialBoard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls" xmlns:board="using:DrawTheWorld.Game.Controls.Board"
+	xmlns:flib="using:FLib.UI.Controls"
+	Unloaded="OnUnloaded" Loaded="OnLoaded">
+	
+	<Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent">
+		
+		<board:Display x:Name="BoardDisplay" LogoVisibility="Collapsed" IsHitTestVisible="False" />
+		
+		<Grid x:Name="AnimationControl" Visibility="Collapsed">
+			<Rectangle Fill="#B2767676" />
+			<Button Width="54" Height="54" HorizontalAlignment="Center" VerticalAlignment="Center" Click="PlayAnimation">
+				<Button.Template>
+					<ControlTemplate TargetType="Button">
+						<Grid Background="Transparent">
+							<VisualStateManager.VisualStateGroups>
+								<VisualStateGroup x:Name="CommonStates">
+									<VisualState x:Name="Normal"/>
+									<VisualState x:Name="PointerOver">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Outline" Storyboard.TargetProperty="Stroke">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="LightGray"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="Fill">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="LightGray"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+									<VisualState x:Name="Pressed">
+										<Storyboard>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Outline" Storyboard.TargetProperty="Stroke">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
+											</ObjectAnimationUsingKeyFrames>
+											<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Arrow" Storyboard.TargetProperty="Fill">
+												<DiscreteObjectKeyFrame KeyTime="0" Value="White"/>
+											</ObjectAnimationUsingKeyFrames>
+										</Storyboard>
+									</VisualState>
+								</VisualStateGroup>
+							</VisualStateManager.VisualStateGroups>
+							
+							<Path x:Name="Outline" Width="54" Height="54" StrokeThickness="3" Stroke="Gray">
+								<Path.Data>
+									<EllipseGeometry RadiusX="25" RadiusY="25" Center="27,27" />
+								</Path.Data>
+							</Path>
+							<Path x:Name="Arrow" Width="20" Height="30" Margin="7,0,0,0" Fill="Gray">
+								<Path.Data>
+									<PathGeometry>
+										<PathFigure StartPoint="0,0" IsClosed="True">
+											<LineSegment Point="20,15" />
+											<LineSegment Point="0,30" />
+										</PathFigure>
+									</PathGeometry>
+								</Path.Data>
+							</Path>
+						</Grid>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+		</Grid>
+	</Grid>
+	
+</UserControl>

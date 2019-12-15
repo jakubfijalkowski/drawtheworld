@@ -1,0 +1,237 @@
+﻿<UserControl
+	x:Class="DrawTheWorld.Game.Controls.Board.Display"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls"
+	xmlns:board="using:DrawTheWorld.Game.Controls.Board"
+	xmlns:flib="using:FLib.UI.Utilities">
+
+	<UserControl.Resources>
+
+		<Color x:Key="FieldBorderColor">#7F41442F</Color>
+		<Color x:Key="FieldBorderTransparentColor">#0041442F</Color>
+		<SolidColorBrush x:Key="FieldBorderBrush" Color="{StaticResource FieldBorderColor}" />
+		<x:Double x:Key="FieldDecoratorOpacity">0.15</x:Double>
+
+		<Style x:Name="VerticalDecorStyle" TargetType="Rectangle">
+			<Setter Property="Width" Value="6" />
+			<Setter Property="Fill">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="1,0" Opacity="{StaticResource FieldDecoratorOpacity}">
+						<GradientStop Offset="0" Color="Transparent" />
+						<GradientStop Offset="0.5" Color="White" />
+						<GradientStop Offset="1" Color="Transparent" />
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Name="HorizontalDecorStyle" TargetType="Rectangle">
+			<Setter Property="Height" Value="6" />
+			<Setter Property="Fill">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1" Opacity="{StaticResource FieldDecoratorOpacity}">
+						<GradientStop Offset="0" Color="Transparent" />
+						<GradientStop Offset="0.5" Color="White" />
+						<GradientStop Offset="1" Color="Transparent" />
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="DescriptionContainerBaseStyle" TargetType="ItemsControl">
+			<Setter Property="HorizontalContentAlignment" Value="Right" />
+			<Setter Property="HorizontalAlignment" Value="Right" />
+			<Setter Property="VerticalContentAlignment" Value="Bottom" />
+			<Setter Property="VerticalAlignment" Value="Bottom" />
+			<Setter Property="ItemTemplate">
+				<Setter.Value>
+					<DataTemplate>
+						<board:BlockDisplay AssignedBlock="{Binding Mode=OneTime}" Width="{Binding BlockSize, Source={CustomResource UI}}" Height="{Binding BlockSize, Source={CustomResource UI}}" />
+					</DataTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Name="HorizontalDescriptionDividerStyle" TargetType="Rectangle">
+			<Setter Property="Height" Value="1" />
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+
+			<Setter Property="Fill">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+						<GradientStop Offset="0.3" Color="{StaticResource FieldBorderColor}"/>
+						<GradientStop Offset="0" Color="{StaticResource FieldBorderTransparentColor}"/>
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Name="HorizontalDescriptionContainerStyle" BasedOn="{StaticResource DescriptionContainerBaseStyle}" TargetType="ItemsControl">
+			<Setter Property="ItemsPanel">
+				<Setter.Value>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Horizontal" />
+					</ItemsPanelTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Name="VerticalDescriptionDividerStyle" TargetType="Rectangle">
+			<Setter Property="Width" Value="1" />
+			<Setter Property="VerticalAlignment" Value="Stretch" />
+
+			<Setter Property="Fill">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+						<GradientStop Offset="0.3" Color="{StaticResource FieldBorderColor}"/>
+						<GradientStop Offset="0" Color="{StaticResource FieldBorderTransparentColor}"/>
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Name="VerticalDescriptionContainerStyle" BasedOn="{StaticResource DescriptionContainerBaseStyle}" TargetType="ItemsControl">
+			<Setter Property="ItemsPanel">
+				<Setter.Value>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Vertical" />
+					</ItemsPanelTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Name="CounterTextStyle" TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource BaseBoardTextStyle}">
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+
+			<Setter Property="ShadowOffset" Value="2" />
+			<Setter Property="Foreground" Value="#FF9E8B52" />
+			<Setter Property="FontSize" Value="20" />
+
+			<Setter Property="Canvas.ZIndex" Value="0" />
+		</Style>
+
+		<Style x:Name="ChargedMarkStyle" TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource BaseBoardTextStyle}">
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+
+			<Setter Property="Foreground" Value="Red" />
+			<Setter Property="FontSize" Value="26" />
+			<Setter Property="Text" Value="!" />
+			<Setter Property="Opacity" Value="0" />
+
+			<Setter Property="Canvas.ZIndex" Value="1" />
+		</Style>
+
+		<Style x:Key="SnappedTextStyle" TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource BaseBoardTextStyle}">
+			<Setter Property="VerticalAlignment" Value="Top" />
+			<Setter Property="TextVerticalAlignment" Value="Top" />
+			<Setter Property="FontSize" Value="50" />
+		</Style>
+
+		<DataTemplate x:Name="ExcludedMarkContainerTemplate">
+			<Viewbox Width="{Binding FieldSize, Source={CustomResource UI}}" Height="{Binding FieldSize, Source={CustomResource UI}}">
+				<Path Stroke="#FFFF1A1A" StrokeThickness="2" Width="19" Height="19" Margin="6,6,5,5">
+					<Path.Data>
+						<GeometryGroup>
+							<LineGeometry StartPoint="0,0" EndPoint="19,19" />
+							<LineGeometry StartPoint="19,0" EndPoint="0,19" />
+						</GeometryGroup>
+					</Path.Data>
+				</Path>
+			</Viewbox>
+		</DataTemplate>
+
+		<Storyboard x:Name="MinimizeBoard">
+			<DoubleAnimation To="0" Duration="0:0:0.4" Storyboard.TargetName="ExcludedMarks" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.4" Storyboard.TargetName="InnerDecor" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.4" Storyboard.TargetName="OuterDecor" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.4" Storyboard.TargetName="InnerGrid" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.4" Storyboard.TargetName="TextMarks" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.4" Storyboard.TargetName="Timer" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.4" Storyboard.TargetName="ColumnDescriptions" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.4" Storyboard.TargetName="RowDescriptions" Storyboard.TargetProperty="Opacity" />
+
+			<ObjectAnimationUsingKeyFrames BeginTime="0:0:0.4" Storyboard.TargetName="Timer" Storyboard.TargetProperty="Visibility">
+				<DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
+			</ObjectAnimationUsingKeyFrames>
+
+			<DoubleAnimation To="0" BeginTime="0:0:0.4" Duration="0:0:0.4" Storyboard.TargetName="ColumnDescriptions" Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
+			<DoubleAnimation To="0" BeginTime="0:0:0.4" Duration="0:0:0.4" Storyboard.TargetName="RowDescriptions" Storyboard.TargetProperty="Width" EnableDependentAnimation="True" />
+
+			<DoubleAnimation x:Name="MinimizeBoardScaleX" BeginTime="0:0:0.4" Duration="0:0:0.4" Storyboard.TargetName="FieldsScale" Storyboard.TargetProperty="ScaleX" />
+			<DoubleAnimation x:Name="MinimizeBoardScaleY" BeginTime="0:0:0.4" Duration="0:0:0.4" Storyboard.TargetName="FieldsScale" Storyboard.TargetProperty="ScaleY" />
+
+			<DoubleAnimation x:Name="MinimizeBoardWidth" BeginTime="0:0:0.4" Duration="0:0:0.4" Storyboard.TargetName="OuterGrid" Storyboard.TargetProperty="Width" EnableDependentAnimation="True" />
+			<DoubleAnimation x:Name="MinimizeBoardHeight" BeginTime="0:0:0.4" Duration="0:0:0.4" Storyboard.TargetName="OuterGrid" Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
+
+			<DoubleAnimation x:Name="MinimizeBoardContainerWidth" BeginTime="0:0:0.4" Duration="0:0:0.4" Storyboard.TargetName="Container" Storyboard.TargetProperty="Width" EnableDependentAnimation="True" />
+			<DoubleAnimation x:Name="MinimizeBoardContainerHeight" BeginTime="0:0:0.4" Duration="0:0:0.4" Storyboard.TargetName="Container" Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
+		</Storyboard>
+
+	</UserControl.Resources>
+
+	<Grid>
+
+		<Grid x:Name="FullGame">
+			<Image x:Name="Logo" Source="/Assets/Images/Logos/BlankLogo.png" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,30" Opacity="0.1" />
+			<ScrollViewer x:Name="GameScrollViewer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0" ZoomMode="Disabled"
+						  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+						  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+				<Grid x:Name="Container" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Background="Transparent">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="Auto" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+
+					<board:Timer x:Name="Timer" Grid.Column="0" Grid.Row="0" />
+					<StackPanel x:Name="ColumnDescriptions" Grid.Column="1" Grid.Row="0" Orientation="Horizontal" />
+					<StackPanel x:Name="RowDescriptions" Grid.Column="0" Grid.Row="1" Orientation="Vertical" />
+					<Canvas Grid.Column="1" Grid.Row="1">
+						<Canvas x:Name="Fields">
+							<Canvas.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform x:Name="FieldsScale" ScaleX="1" ScaleY="1" />
+								</TransformGroup>
+							</Canvas.RenderTransform>
+						</Canvas>
+						<Canvas x:Name="ExcludedMarks" />
+						<Canvas x:Name="OuterDecor">
+							<Canvas.RenderTransform>
+								<TransformGroup>
+									<ScaleTransform x:Name="OuterDecorScale" ScaleX="1" ScaleY="1" />
+								</TransformGroup>
+							</Canvas.RenderTransform>
+						</Canvas>
+						<Canvas x:Name="InnerDecor" />
+						<Border x:Name="OuterGrid" BorderBrush="{StaticResource FieldBorderBrush}" BorderThickness="1" />
+						<Path x:Name="InnerGrid" Stroke="{StaticResource FieldBorderBrush}" StrokeThickness="1" Stretch="Uniform" />
+					</Canvas>
+					<board:Highlighter x:Name="Highlighter" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+					<Canvas x:Name="TextMarks" Grid.Column="1" Grid.Row="1" IsHitTestVisible="False" />
+					<board:ActionLayer x:Name="ActionLayer" Grid.Column="1" Grid.Row="1" />
+				</Grid>
+			</ScrollViewer>
+		</Grid>
+		<Grid x:Name="SnappedGame" Background="Transparent" Visibility="Collapsed" VerticalAlignment="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			
+			<Image Grid.Row="0" Source="/Assets/Images/Logos/BlankLogo.300.png" Stretch="None" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
+			<Border Grid.Row="1" Width="200" Height="162" BorderThickness="1" BorderBrush="#FF6E7E93" Background="White" HorizontalAlignment="Center">
+				<Image x:Name="BoardThumbnail" Width="160" Height="160" />
+			</Border>
+
+			<!-- This is managed by the Timer control, but it has to be here -->
+			<local:TextBlockWithShadow x:Name="SnappedTimer" Grid.Row="2" Text="0s" Style="{StaticResource SnappedTextStyle}" />
+		</Grid>
+	</Grid>
+</UserControl>

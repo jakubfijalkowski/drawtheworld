@@ -1,0 +1,176 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls">
+
+	<ControlTemplate x:Name="TutorialPage1Template" TargetType="ContentControl">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<StackPanel Grid.Column="0" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="Na początek trochę teorii" Style="{StaticResource TutorialHeaderStyle}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}">
+					<Paragraph>
+						Draw the World jest grą logiczną bazującą na
+						<Bold>Japońskich Krzyżówkach</Bold>, znanych jako
+						<Bold>malowanie liczbami</Bold> albo
+						<Bold>obrazki logiczne</Bold>. W grach tego typu, musisz wypełnić siatkę pól zgodnie ze wskazówkami umieszczonych na bokach
+						planszy, by otrzymać ukryty obrazek.
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+			<local:TutorialBoard Grid.Column="1" VerticalAlignment="Top" AssignedBoardName="TutorialPage1" />
+		</Grid>
+	</ControlTemplate>
+
+	<ControlTemplate x:Name="TutorialPage2Template" TargetType="ContentControl">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<RichTextBlock Grid.Column="0" Style="{StaticResource TutorialTextStyle}">
+				<Paragraph>
+					Wystarczy teorii. Krótko mówiąc – Twoim zadaniem jest narysowanie ukrytego obrazka.
+					<LineBreak />
+					By to zrobić, musisz użyć narzędzi(lecz jeśli chcesz, wystarczy, że ograniczysz się do jednego) oraz wskazówek, które zostawił Ci autor planszy.
+					Nie martw się – wskazówki te są zawsze poprawne.
+					<LineBreak />
+				</Paragraph>
+
+				<Paragraph>
+					Wskazówki mówią nam jak trzeba pomalować dany wiersz lub kolumnę. Jeśli wiersz jest opisany jako "<Span Foreground="Red">1</Span>
+					<Span Foreground="Green">1</Span>
+					<Span Foreground="Black">1</Span>", musi zawierać jeden czerwony blok, po którym znajduje się jeden zielony, a następnie czarny. Każdy z nich ma
+					rozmiar jednego pola, a między nimi może, ale nie musi, być dowolna ilość pustych pól.  Jedynym wyjątkiem, kiedy przynajmniej jedno puste pole
+					musi się znaleźć, jest sytuacja, gdy dwa bloki tego samego koloru znajdują się obok siebie.
+				</Paragraph>
+			</RichTextBlock>
+			<local:TutorialBoard Grid.Column="1" VerticalAlignment="Center" AssignedBoardName="TutorialPage2" />
+		</Grid>
+	</ControlTemplate>
+
+	<ControlTemplate x:Name="TutorialPage3Template" TargetType="ContentControl">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition Width="Auto" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="15" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="15" />
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="15" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<local:TextBlockWithShadow Text="Narzędzia" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource TutorialHeaderStyle}" />
+			<StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="Pędzel" Style="{StaticResource TutorialHeaderLevel2Style}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}" LineHeight="50">
+					<Paragraph>
+						By wypełnić pola kolorem, musisz użyć
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/BrushIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer>. Wystarczy, że je wybierzesz i już możesz zacząć rysować! Jeśli przez przypadek
+						wybierzesz złe pole startowe albo zły kolor, nie martw się, w każdej chwili możesz przerwać akcję naciskając spację albo dotykając ekranu innym
+						palcem
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+
+			<StackPanel Grid.Column="0" Grid.Row="3" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="X" Style="{StaticResource TutorialHeaderLevel2Style}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}" LineHeight="50">
+					<Paragraph>
+						Gra zawiera też kilka narzędzi, które mogą się bardzo przydać przy rozwiązywaniu łamigłówek. Jednym z nich, szczególnie użytecznym, jest
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/ExcluderIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer>, który pozwala Ci na wyłączenie danego pola z gry. Jeśli jesteś pewien, że dane pole jest na pewno puste – nie krępuj się tylko postaw tam "X".
+						Jeśli zmienisz zdanie – nie przejmuj się, zawsze możesz cofnąć swój ruch. Wystarczy, że użyjesz tego samego narzędzia, ale jako pole startowe zaznaczysz to, które
+						wcześniej zostało przez Ciebie wykluczone.
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+			<local:TutorialBoard Grid.Column="1" Grid.Row="3" AssignedBoardName="ExcluderSample" />
+
+			<StackPanel Grid.Column="0" Grid.Row="5" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="Licznik" Style="{StaticResource TutorialHeaderLevel2Style}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}" LineHeight="50">
+					<Paragraph>
+						Innym przydatnym narzędziem jest
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/CounterToolIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer>. Pomaga on w liczeniu pól, lecz ciężko opisać, jak on działa. Obejrzyj animację zamieszczoną obok,
+						a wszystko będzie jasne.
+					</Paragraph>
+					<Paragraph>
+						Jeśli chcesz usunąć swoje pomocnicze liczby, naciśnij spację albo użyj
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/EraseCounterToolIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer> umieszczonego na pasku narzędzi.
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+			<local:TutorialBoard Grid.Column="1" Grid.Row="5" AssignedBoardName="CounterSample" />
+
+			<StackPanel Grid.ColumnSpan="2" Grid.Row="7" Orientation="Vertical">
+				<local:TextBlockWithShadow Text="Przesuwanie planszy" Style="{StaticResource TutorialHeaderLevel2Style}" />
+				<RichTextBlock Style="{StaticResource TutorialTextStyle}" LineHeight="50">
+					<Paragraph>
+						Jeśli chciałbyś przesunąć planszę, musisz użyć do tego
+						<InlineUIContainer>
+							<Image Source="/Assets/Tools/PanToolIcon.png" Margin="0,0,0,-15" Width="50" />
+						</InlineUIContainer> lub odznaczyć wybrane narzędzie(kliknij go prawym przyciskiem myszy).
+					</Paragraph>
+				</RichTextBlock>
+			</StackPanel>
+		</Grid>
+	</ControlTemplate>
+
+	<ControlTemplate x:Name="TutorialPage4Template" TargetType="ContentControl">
+		<StackPanel Orientation="Vertical">
+			<local:TextBlockWithShadow Text="Wskazówki" Style="{StaticResource TutorialHeaderLevel2Style}" />
+			<RichTextBlock Style="{StaticResource TutorialTextStyle}">
+				<Paragraph>
+					Na koniec kilka wskazówek, które mogą się przydać przy rozwiązywaniu plansz:
+					<LineBreak />
+				</Paragraph>
+				<Paragraph>
+					Kolor i "pędzel" możesz wybrać zarówno z paska narzędzi, jak i naciskając na liczbę we wskazówkach. Masz wtedy pewność, że wybrałeś odpowiedni kolor.
+					<LineBreak />
+				</Paragraph>
+				<Paragraph>
+					Jeśli tryb gry nie wygasza automatycznie liczb we wskazówkach, możesz to zrobić ręcznie naciskając ją dwukrotnie. Jeśli się pomyliłeś i chcesz daną liczbę znów
+					w pełnych barwach - powtórz tą samą akcję, co przy wygaszaniu.
+					<LineBreak />
+				</Paragraph>
+			</RichTextBlock>
+		</StackPanel>
+	</ControlTemplate>
+
+	<ControlTemplate x:Name="TutorialPage5Template" TargetType="ContentControl">
+		<RichTextBlock Style="{StaticResource TutorialTextStyle}">
+			<Paragraph>
+				Po takim krótkim wprowadzeniu, malowanie obrazów w Draw the World nie powinno sprawić Ci problemu.
+				<LineBreak/>
+				Wartym odnotowania jest, że gra oddaje Ci do dyspozycji kilka trybów rozgrywki, które różnią się zasadami. Lecz cóż to za frajda, jeśli wszystko wiadomo od
+				razu? ;-) Jeśli jednak naprawdę chcesz dowiedzieć się, jak one działają – odwiedź "Pomoc".
+				<LineBreak />
+			</Paragraph>
+			<Paragraph>
+				Jeśli chciałbyś jakichś wskazówek, kilka jest zamieszczonych na
+				<InlineUIContainer>
+					<HyperlinkButton NavigateUri="http://en.wikipedia.org/wiki/Nonogram" Style="{StaticResource TutorialHyperlinkStyle}">Wikipedii</HyperlinkButton>
+				</InlineUIContainer>.
+				Są one co prawda przygotowane dla klasycznych obrazków logicznych, lecz dostosowanie ich do tej gry nie powinno nastręczyć Ci trudności.
+			</Paragraph>
+		</RichTextBlock>
+	</ControlTemplate>
+
+</ResourceDictionary>

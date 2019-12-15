@@ -1,0 +1,63 @@
+﻿<Canvas
+	x:Class="DrawTheWorld.Game.Controls.Board.Highlighter"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<Canvas.Resources>
+		
+		<Color x:Key="HighlightedLineColor">#33FFFFFF</Color>
+		<SolidColorBrush x:Key="HighlightedLineBrush" Color="{StaticResource HighlightedLineColor}" />
+
+		<Storyboard x:Name="MoveRow">
+			<DoubleAnimation To="0" Duration="0:0:0.025" Storyboard.TargetName="RowDescriptionHighlighter" Storyboard.TargetProperty="(Canvas.Top)" />
+			<DoubleAnimation To="0" Duration="0:0:0.025" Storyboard.TargetName="RowHighlighter" Storyboard.TargetProperty="(Canvas.Top)" />
+		</Storyboard>
+
+		<Storyboard x:Name="MoveColumn">
+			<DoubleAnimation To="0" Duration="0:0:0.025" Storyboard.TargetName="ColumnDescriptionHighlighter" Storyboard.TargetProperty="(Canvas.Left)" />
+			<DoubleAnimation To="0" Duration="0:0:0.025" Storyboard.TargetName="ColumnHighlighter" Storyboard.TargetProperty="(Canvas.Left)" />
+		</Storyboard>
+
+		<Storyboard x:Name="ShowRow">
+			<DoubleAnimation To="1" Duration="0:0:0.05" Storyboard.TargetName="RowDescriptionHighlighter" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="1" Duration="0:0:0.05" Storyboard.TargetName="RowHighlighter" Storyboard.TargetProperty="Opacity" />
+		</Storyboard>
+
+		<Storyboard x:Name="ShowColumn">
+			<DoubleAnimation To="1" Duration="0:0:0.05" Storyboard.TargetName="ColumnDescriptionHighlighter" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="1" Duration="0:0:0.05" Storyboard.TargetName="ColumnHighlighter" Storyboard.TargetProperty="Opacity" />
+		</Storyboard>
+
+		<Storyboard x:Name="HideRow">
+			<DoubleAnimation To="0" Duration="0:0:0.05" Storyboard.TargetName="RowDescriptionHighlighter" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.05" Storyboard.TargetName="RowHighlighter" Storyboard.TargetProperty="Opacity" />
+		</Storyboard>
+
+		<Storyboard x:Name="HideColumn">
+			<DoubleAnimation To="0" Duration="0:0:0.05" Storyboard.TargetName="ColumnDescriptionHighlighter" Storyboard.TargetProperty="Opacity" />
+			<DoubleAnimation To="0" Duration="0:0:0.05" Storyboard.TargetName="ColumnHighlighter" Storyboard.TargetProperty="Opacity" />
+		</Storyboard>
+		
+	</Canvas.Resources>
+
+	<Rectangle x:Name="RowDescriptionHighlighter" Width="{Binding RowDescriptionOffset}" Height="{Binding FieldSize, Source={CustomResource UI}}" Opacity="0">
+		<Rectangle.Fill>
+			<LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+				<GradientStop Offset="0" Color="Transparent" />
+				<GradientStop Offset="1" Color="{StaticResource HighlightedLineColor}"/>
+			</LinearGradientBrush>
+		</Rectangle.Fill>
+	</Rectangle>
+	<Rectangle x:Name="RowHighlighter" Fill="{StaticResource HighlightedLineBrush}" Height="{Binding FieldSize, Source={CustomResource UI}}" Opacity="0" Canvas.Left="{Binding RowDescriptionOffset}" />
+
+	<Rectangle x:Name="ColumnDescriptionHighlighter" Width="{Binding FieldSize, Source={CustomResource UI}}" Height="{Binding ColumnDescriptionOffset}" Opacity="0">
+		<Rectangle.Fill>
+			<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+				<GradientStop Offset="0" Color="Transparent" />
+				<GradientStop Offset="1" Color="{StaticResource HighlightedLineColor}"/>
+			</LinearGradientBrush>
+		</Rectangle.Fill>
+	</Rectangle>
+	<Rectangle x:Name="ColumnHighlighter" Width="{Binding FieldSize, Source={CustomResource UI}}" Fill="{StaticResource HighlightedLineBrush}" Opacity="0" Canvas.Top="{Binding ColumnDescriptionOffset}" />
+	
+</Canvas>

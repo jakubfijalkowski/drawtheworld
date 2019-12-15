@@ -1,0 +1,114 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls">
+
+	<Style x:Key="DefaultTextBlockStyle" TargetType="TextBlock">
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="FontSize" Value="15" />
+		<Setter Property="FontFamily" Value="/Assets/Fonts/Jura/Jura-Regular.ttf#Jura" />
+	</Style>
+
+	<Style TargetType="RichTextBlock">
+		<Setter Property="TextWrapping" Value="Wrap" />
+		<Setter Property="TextAlignment" Value="Justify" />
+	</Style>
+
+	<Style x:Key="TutorialHeaderStyle" TargetType="local:TextBlockWithShadow">
+		<Setter Property="FontFamily" Value="Segoe UI" />
+		<Setter Property="FontStyle" Value="Italic" />
+		<Setter Property="FontSize" Value="35" />
+
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="ShadowBrush" Value="#FF57135A" />
+	</Style>
+
+	<Style x:Key="TutorialHeaderLevel2Style" TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource TutorialHeaderStyle}">
+		<Setter Property="FontSize" Value="28" />
+	</Style>
+
+	<Style x:Key="TutorialTextStyle" TargetType="RichTextBlock">
+		<Setter Property="Margin" Value="10" />
+		<Setter Property="Padding" Value="20,0,0,0" />
+
+		<Setter Property="VerticalAlignment" Value="Top" />
+
+		<Setter Property="TextWrapping" Value="Wrap" />
+		<Setter Property="TextAlignment" Value="Justify" />
+
+		<Setter Property="FontSize" Value="24" />
+		<Setter Property="FontWeight" Value="ExtraLight" />
+		<Setter Property="FontFamily" Value="/Assets/Fonts/Jura/Jura-ExtraLight.ttf#Jura" />
+
+		<Setter Property="Foreground" Value="White" />
+	</Style>
+
+	<Style x:Key="TutorialHyperlinkStyle" TargetType="HyperlinkButton">		
+		<Setter Property="Padding" Value="0,0,-4,-5" />
+		<Setter Property="HorizontalAlignment" Value="Center" />
+		<Setter Property="VerticalAlignment" Value="Bottom" />
+		
+		<Setter Property="FontSize" Value="24" />
+		<Setter Property="FontWeight" Value="Light" />
+		<Setter Property="FontFamily" Value="/Assets/Fonts/Jura/Jura-Light.ttf#Jura" />
+
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="HyperlinkButton">
+					<Grid Background="Transparent" Margin="{TemplateBinding Padding}">
+						<VisualStateManager.VisualStateGroups>
+							<VisualStateGroup x:Name="CommonStates">
+								<VisualState x:Name="Normal" />
+								<VisualState x:Name="PointerOver">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Underline" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+								<VisualState x:Name="Pressed">
+									<Storyboard>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="Underline" Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="Visible" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="LinkText" Storyboard.TargetProperty="Foreground">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="#FFFCB800" />
+										</ObjectAnimationUsingKeyFrames>
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetName="UnderlineColor" Storyboard.TargetProperty="Color">
+											<DiscreteObjectKeyFrame KeyTime="0" Value="#FFFCB800" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</VisualState>
+							</VisualStateGroup>
+						</VisualStateManager.VisualStateGroups>
+						<local:TextBlockWithShadow x:Name="LinkText" Text="{TemplateBinding Content}" Foreground="#FFCC9200" ShadowBrush="White"
+												   Margin="0" />
+						<Rectangle x:Name="Underline" VerticalAlignment="Bottom" Height="3" Visibility="Collapsed">
+							<Rectangle.Fill>
+								<LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+									<GradientStop Offset="0" Color="#7FCC9200" />
+									<GradientStop x:Name="UnderlineColor" Offset="0.5" Color="#FFCC9200" />
+									<GradientStop Offset="1" Color="#CCFFFFFF" />
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+						</Rectangle>
+					</Grid>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style x:Key="PageHeaderStyle" TargetType="local:TextBlockWithShadow">
+		<Setter Property="Foreground" Value="White" />
+		<Setter Property="ShadowBrush" Value="#FF33628F" />
+
+		<Setter Property="FontFamily" Value="/Assets/Fonts/Jura/Jura-Light.ttf#Jura" />
+		<Setter Property="FontWeight" Value="Light" />
+		<Setter Property="FontSize" Value="60" />
+
+		<Setter Property="VerticalAlignment" Value="Center" />
+		
+		<Setter Property="IsTabStop" Value="False" />
+	</Style>
+
+</ResourceDictionary>

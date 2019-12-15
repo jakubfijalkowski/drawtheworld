@@ -1,0 +1,18 @@
+﻿<Canvas
+	x:Class="DrawTheWorld.Game.Controls.Board.ActionLayer"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:DrawTheWorld.Game.Controls">
+	
+	<Canvas.Resources>
+		<Style x:Name="NumberStyle" TargetType="local:TextBlockWithShadow" BasedOn="{StaticResource BaseBoardTextStyle}">
+			<Setter Property="HorizontalContentAlignment" Value="Center" />
+			<Setter Property="VerticalContentAlignment" Value="Center" />
+
+			<Setter Property="Foreground" Value="#FF1C6319" />
+			<Setter Property="FontSize" Value="20" />
+			<Setter Property="ShadowOffset" Value="2" />
+		</Style>
+	</Canvas.Resources>
+	
+</Canvas>
